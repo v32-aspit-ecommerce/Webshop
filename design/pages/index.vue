@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div class="container mx-auto">
+    <Footercard />
+  </div>
 </template>
 
 <script setup></script>
