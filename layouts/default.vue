@@ -50,10 +50,6 @@
             type="text"
             class="w-8rem sm:w-auto"
           />
-          <Avatar
-            image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
-            shape="circle"
-          />
         </div>
       </template>
     </Menubar>
