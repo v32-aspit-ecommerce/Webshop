@@ -1,6 +1,7 @@
 <template>
   <div>
     <div>
+      product index
       <slot />
     </div>
   </div>
