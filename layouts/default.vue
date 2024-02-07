@@ -1,5 +1,5 @@
 <template>
-  <Menubar :model="items">
+  <!-- <Menubar :model="items">
     <template #start>
       <svg
         width="35"
@@ -41,7 +41,7 @@
         <InputText placeholder="Search" type="text" class="w-8rem sm:w-auto" />
       </div>
     </template>
-  </Menubar>
+  </Menubar> -->
 
   <div>
     <slot />
@@ -69,4 +69,9 @@ const items = ref([
 ]);
 </script>
 
-<style></style>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+</style>

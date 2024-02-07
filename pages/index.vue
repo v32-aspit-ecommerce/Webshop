@@ -1,9 +1,13 @@
 <template>
-  <img src="https://unsplash.it/200/100" alt="Hero-billede" />
+  <img
+    src="https://unsplash.it/1920/300"
+    alt="Hero-billede"
+    class="herobillede"
+  />
   <div class="card">
     <Carousel
       :value="products"
-      :numVisible="3"
+      :numVisible="5"
       :numScroll="1"
       :responsiveOptions="responsiveOptions"
       circular
@@ -11,21 +15,12 @@
     >
       <template #item="slotProps">
         <div class="border-1 surface-border border-round m-2 p-3">
-          <div class="mb-3">
+          <div class="mb-3 image align-middle">
             <div class="relative mx-auto">
               <img
-                :src="
-                  'https://primefaces.org/cdn/primevue/images/product/' +
-                  slotProps.data.image
-                "
+                :src="slotProps.data.image"
                 :alt="slotProps.data.name"
-                class="w-full border-round"
-              />
-              <Tag
-                :value="slotProps.data.inventoryStatus"
-                :severity="getSeverity(slotProps.data.inventoryStatus)"
-                class="absolute"
-                style="left: 5px; top: 5px"
+                class="w-full border-round carousel"
               />
             </div>
           </div>
@@ -54,12 +49,12 @@ const products = ref([]);
 const responsiveOptions = ref([
   {
     breakpoint: "1400px",
-    numVisible: 2,
+    numVisible: 5,
     numScroll: 1,
   },
   {
     breakpoint: "1199px",
-    numVisible: 3,
+    numVisible: 5,
     numScroll: 1,
   },
   {
@@ -74,21 +69,6 @@ const responsiveOptions = ref([
   },
 ]);
 
-const getSeverity = (status) => {
-  switch (status) {
-    case "INSTOCK":
-      return "success";
-
-    case "LOWSTOCK":
-      return "warning";
-
-    case "OUTOFSTOCK":
-      return "danger";
-
-    default:
-      return null;
-  }
-};
 onMounted(async () => {
   try {
     const response = await fetch("https://fakestoreapi.com/products");
@@ -103,4 +83,26 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
+.card {
+  margin: 0;
+  padding: 0;
+}
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 150px;
+  max-width: 150px;
+}
+.herobillede {
+  width: 100vw;
+}
+image {
+  padding: 20px;
+}
+</style>
