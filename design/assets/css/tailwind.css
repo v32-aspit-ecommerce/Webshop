@@ -13,4 +13,20 @@ body {
   .card {
     @apply p-3 rounded-md bg-white shadow-md h-full;
   }
+  .CCard {
+    @apply rounded-md bg-white shadow-md h-full text-center relative max-h-96 overflow-hidden;
+  }
+  .CImage {
+    @apply w-full rounded-md;
+  }
+  .CText {
+    @apply absolute left-0 right-0 top-2/4 transform -translate-y-2/4 text-white text-3xl font-border; /* top-2/4 = 50% is center but the text isent but to center it i needed to use -translate-y-2/4 to get the text at 50% */
+  }
+}
+@layer base {
+  .font-border {
+    /* -webkit-text-stroke: 4px black; */
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+      1px 1px 0 #000;
+  }
 }

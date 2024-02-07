@@ -1,5 +1,5 @@
 <template>
-  <div class="main-bg">
+  <div class="main-bg max-h-full">
     <!-- out the page content -->
     <div class="container mx-auto p-4">
       <slot />
