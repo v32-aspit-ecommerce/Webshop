@@ -17,14 +17,24 @@
       </template>
     </Menubar>
   </div>
-
-  <div>
-    <slot />
-  </div>
-
-  <footer></footer>
 </template>
+<script setup>
+import { ref } from "vue";
 
-<script setup></script>
+const items = ref([
+  {
+    label: "Home",
+    to: "/",
+  },
+  {
+    label: "Collection",
+    to: "/collections/",
+  },
+]);
+</script>
 
-<style scoped></style>
+<style scoped>
+.router-link-active {
+  background: red;
+}
+</style>
