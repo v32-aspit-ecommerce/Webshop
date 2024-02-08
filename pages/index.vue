@@ -1,6 +1,7 @@
 <template>
-  <h1>FORSIDE</h1>
-  <p>Ello</p>
+  <div class="flex justify-center">
+    <Footercard />
+  </div>
 </template>
 
 <script setup></script>
