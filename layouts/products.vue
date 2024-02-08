@@ -1,4 +1,5 @@
 <template>
+  <Header />
   <div class="main-bg max-h-full">
     <!-- out the page content -->
     <div class="container mx-auto p-4">
