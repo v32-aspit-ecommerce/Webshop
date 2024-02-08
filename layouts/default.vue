@@ -5,7 +5,11 @@
     <slot />
   </div>
 
-  <footer></footer>
+  <footer>
+    <div class="flex justify-center">
+      <Footercard />
+    </div>
+  </footer>
 </template>
 
 <script setup></script>

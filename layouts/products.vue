@@ -6,6 +6,12 @@
       <slot />
     </div>
   </div>
+
+  <footer>
+    <div class="flex justify-center">
+      <Footercard />
+    </div>
+  </footer>
 </template>
 
 <style scoped>

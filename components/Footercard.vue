@@ -50,7 +50,6 @@ footer {
   height: 350px;
   width: 100%;
 }
-
 footer input {
   color: #fdf5dc;
   padding: 1px;
@@ -59,12 +58,10 @@ footer input {
   outline-width: 1px;
   outline-style: solid;
 }
-
 .footersubmit {
   border-radius: 9999px;
   background-color: #cf9ea9;
 }
-
 footer img {
   border-radius: 0.25rem;
   margin: 0.25rem;
