@@ -62,7 +62,7 @@ footer input {
 
 .footersubmit {
   border-radius: 9999px;
-  background-color: black;
+  background-color: #cf9ea9;
 }
 
 footer img {
