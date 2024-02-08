@@ -5,7 +5,7 @@
     <div class="my-auto">
       <div></div>
       <div class="flex">
-        <input class="w-2/6" placeholder="Your Name" value="" />
+        <input class="w-2/6" placeholder="Your Name" v alue="" />
         <input class="w-2/6" placeholder="Your Email Address" value="" />
         <input class="w-1/5 footersubmit" value="I WANT IT!" type="submit" />
       </div>
@@ -48,6 +48,7 @@
 footer {
   background-color: #1f464e;
   height: 350px;
+  width: 100%;
 }
 
 footer input {
