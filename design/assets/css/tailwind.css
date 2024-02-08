@@ -8,16 +8,16 @@ body {
 
 @layer components {
   .btn {
-    @apply bg-[#12b488] text-white px-3 py-2 rounded-md text-sm text-white;
+    @apply bg-[hsl(164,82%,39%)] text-white px-3 py-2 rounded-md text-sm text-white hover:bg-[hsl(164,82%,44%)];
   }
   .card {
     @apply p-3 rounded-md bg-white shadow-md h-full;
   }
   .CCard {
-    @apply rounded-md text-center relative max-h-96 flex justify-center hover:scale-105;
+    @apply rounded-md text-center relative max-h-96 flex justify-center active:scale-90 hover:scale-105 duration-200;
   }
   .CImage {
-    @apply rounded-md bg-white shadow-md w-full active:scale-90 overflow-hidden;
+    @apply rounded-md bg-white shadow-md w-full overflow-hidden;
   }
   .CText {
     @apply absolute left-0 right-0 top-2/4 transform -translate-y-2/4 text-white text-3xl font-border; /* top-2/4 = 50% is center but the text isent but to center it i needed to use -translate-y-2/4 to get the text at 50% */
