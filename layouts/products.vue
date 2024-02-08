@@ -1,6 +1,6 @@
 <template>
   <Header />
-  <div class="main-bg max-h-full">
+  <div class="main-bg height-calc">
     <!-- out the page content -->
     <div class="container mx-auto p-4">
       <slot />
@@ -17,8 +17,5 @@
 <style scoped>
 .router-link-exact-active {
   color: #12b488;
-}
-.main-bg {
-  background-color: #e8f7dd;
 }
 </style>

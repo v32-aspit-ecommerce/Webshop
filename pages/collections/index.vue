@@ -1,7 +1,7 @@
 <template>
   <h1 class="w-full text-center text-5xl font-bold pb-4">Collection</h1>
   <div class="grid grid-cols-4 gap-5">
-    <NuxtLink to="/products" class="CCard"
+    <NuxtLink to="/products?item" class="CCard"
       ><img src="" alt="" class="CImage" />
       <p class="CText">Products</p></NuxtLink
     >

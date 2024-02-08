@@ -1,6 +1,4 @@
 <template>
-  <div></div>
-
   <footer class="flex justify-center">
     <div class="my-auto">
       <div></div>

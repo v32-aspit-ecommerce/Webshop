@@ -29,4 +29,10 @@ body {
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
       1px 1px 0 #000;
   }
+  .height-calc {
+    min-height: calc(100vh - (350px + 84px));
+  }
+  .main-bg {
+    background-color: #e8f7dd;
+  }
 }

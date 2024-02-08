@@ -1,15 +1,13 @@
 <template>
   <Header />
 
-  <div>
+  <div class="height-calc main-bg">
     <slot />
   </div>
 
-  <footer>
-    <div class="flex justify-center">
-      <Footercard />
-    </div>
-  </footer>
+  <div class="flex justify-center">
+    <Footercard />
+  </div>
 </template>
 
 <script setup></script>

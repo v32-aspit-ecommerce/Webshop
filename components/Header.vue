@@ -30,11 +30,15 @@ const items = ref([
     label: "Collection",
     to: "/collections/",
   },
+  {
+    label: "Products",
+    to: "/products?item",
+  },
 ]);
 </script>
 
 <style scoped>
 .router-link-active {
-  background: red;
+  color: hsl(164, 82%, 39%);
 }
 </style>

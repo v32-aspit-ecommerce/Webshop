@@ -1,8 +1,4 @@
-<template>
-  <div class="flex justify-center">
-    <Footercard />
-  </div>
-</template>
+<template></template>
 
 <script setup></script>
 
