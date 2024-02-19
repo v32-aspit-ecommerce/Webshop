@@ -1,6 +1,6 @@
 <template>
-  <footer class="flex justify-between">
-    <img src="~/assets/img/blomstleft.png" alt="" />
+  <footer class="flex justify-center footer-between">
+    <img class="footerflowers" src="~/assets/img/blomstleft.png" alt="" />
     <div class="flex justify-center">
       <div class="my-auto">
         <div class="flex"></div>
@@ -40,7 +40,7 @@
         </div>
       </div>
     </div>
-    <img src="~/assets/img/blomstright.png" alt="" />
+    <img class="footerflowers" src="~/assets/img/blomstright.png" alt="" />
   </footer>
 </template>
 
@@ -60,15 +60,31 @@ footer input {
   outline-width: 1px;
   outline-style: solid;
 }
-.footersubmit {
-  border-radius: 9999px;
-  background-color: #cf9ea9;
-}
+
 footer img {
   border-radius: 0.25rem;
   margin: 0.25rem;
   max-width: 100%;
   height: auto;
   vertical-align: middle;
+}
+
+.footersubmit {
+  border-radius: 9999px;
+  background-color: #cf9ea9;
+}
+
+.footerflowers {
+  display: none;
+}
+
+@media screen and (min-width: 900px) {
+  .footerflowers {
+    display: inline;
+  }
+
+  .footer-between {
+    justify-content: space-between;
+  }
 }
 </style>
