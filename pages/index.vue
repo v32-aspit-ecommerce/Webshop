@@ -1,22 +1,26 @@
 <template>
-  <img
-    src="https://unsplash.it/1920/300"
-    alt="Hero-billede"
-    class="herobillede"
-  />
+  <div class="herobillede">
+    <img src="https://unsplash.it/1920/300" alt="Hero-billede" />
+    <p class="herotext">
+      We make clothes with love, designed to spark the conversation, and support
+      animal rescue too
+    </p>
+  </div>
   <div class="card">
     <Carousel
       :value="products"
       :numVisible="5"
       :numScroll="1"
       :responsiveOptions="responsiveOptions"
-      circular
-      :autoplayInterval="3000"
+      :circular="true"
+      :autoplayInterval="300000000"
+      :showIndicators="false"
+      class="boks"
     >
       <template #item="slotProps">
-        <div class="border-1 surface-border border-round m-2 p-3">
-          <div class="mb-3 image align-middle">
-            <div class="relative mx-auto">
+        <div class="border-1 surface-border border-round m-2 p-3 item">
+          <div class="mb-3 image align-middle imgboks">
+            <div class="relative">
               <img
                 :src="slotProps.data.image"
                 :alt="slotProps.data.name"
@@ -25,13 +29,15 @@
             </div>
           </div>
           <div class="mb-3 font-medium">{{ slotProps.data.name }}</div>
-          <div class="flex justify-content-between align-items-center">
-            <div class="mt-0 font-semibold text-xl">
+          <div class="flex justify-content-between align-items-center buywidth">
+            <div class="mt-0 font-semibold text-xl textcenter">
               ${{ slotProps.data.price }}
             </div>
             <span>
-              <Button icon="pi pi-heart" severity="secondary" outlined />
-              <Button icon="pi pi-shopping-cart" class="ml-2" />
+              <!-- <Button icon="pi pi-heart" severity="secondary" outlined /> -->
+              <Button icon="pi pi-shopping-cart" class="ml-2 buybutton">
+                View Details</Button
+              >
             </span>
           </div>
         </div>
@@ -76,7 +82,10 @@ onMounted(async () => {
       throw new Error("Failed to fetch products");
     }
     const data = await response.json();
-    products.value = data;
+    const sortedPrducts = data
+      .sort((a, b) => b.timestamp - a.timestamp)
+      .slice(0, 10);
+    products.value = sortedPrducts;
   } catch (error) {
     console.error(error);
   }
@@ -91,11 +100,24 @@ onMounted(async () => {
 .card {
   margin: 0;
   padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.boks {
+  display: flex;
+  justify-content: center;
+  width: 80vw;
+}
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 1rem;
+  height: 205px;
 }
 .carousel {
   display: flex;
-  justify-content: center;
-  align-items: center;
   max-height: 150px;
   max-width: 150px;
 }
@@ -104,5 +126,41 @@ onMounted(async () => {
 }
 image {
   padding: 20px;
+}
+.buybutton {
+  width: 100%;
+  height: 35px;
+}
+.buywidth {
+  width: 100%;
+}
+.imgboks {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.textcenter {
+  text-align: center;
+}
+
+.herobillede {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.herotext {
+  display: flex;
+  position: absolute;
+  width: 50%;
+  top: calc(50% - 40px);
+  color: white;
+  font-size: 40px;
+  line-height: 40px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  text-align: center;
 }
 </style>
