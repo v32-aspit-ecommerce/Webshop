@@ -25,7 +25,7 @@
               <img
                 :src="slotProps.data.image"
                 :alt="slotProps.data.name"
-                class="w-full border-round thumb"
+                class="w-full border-round carousel"
               />
             </div>
           </div>
@@ -35,16 +35,13 @@
           <div
             class="flex justify-content-between align-items-center flex-col buywidth"
           >
-            <!-- <p class="font-bold text-gray-500 m-4 truncate flextext">
-              {{ slotProps.data.title }}
-            </p> -->
-            <div class="font-bold text-gray-500 m-4 truncate textcenter">
-              Price - ${{ slotProps.data.price }}
+            <div class="mt-0 font-semibold text-xl textcenter">
+              ${{ slotProps.data.price }}
             </div>
             <span>
-              <NuxtLink :to="`/products/${slotProps.data.id}`">
-                <p class="btn my-4 text-center">View Details</p>
-              </NuxtLink>
+              <Button icon="pi pi-shopping-cart" class="ml-2 btn w-full">
+                View Details</Button
+              >
             </span>
           </div>
         </div>
@@ -128,7 +125,7 @@ h2 {
   padding: 0 1rem;
   height: 205px;
 }
-.thumb {
+.carousel {
   display: flex;
   max-height: 150px;
   max-width: 150px;
@@ -174,10 +171,5 @@ h2 {
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
     1px 1px 0 #000;
   text-align: center;
-}
-.flextext {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
 }
 </style>

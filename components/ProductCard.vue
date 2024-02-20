@@ -19,7 +19,7 @@ const { product } = defineProps(["product"]);
 <style scoped>
 .thumb {
   max-height: 120px;
-  max-width: 70%;
+  max-width: 100%;
   margin: 0 auto;
 }
 </style>
