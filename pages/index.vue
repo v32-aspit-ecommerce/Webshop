@@ -6,7 +6,7 @@
       animal rescue too
     </p>
   </div>
-  <div class="card">
+  <div class="cards">
     <Carousel
       :value="products"
       :numVisible="5"
@@ -15,7 +15,7 @@
       :circular="true"
       :autoplayInterval="300000000"
       :showIndicators="false"
-      class="boks"
+      class="card"
     >
       <template #item="slotProps">
         <div class="border-1 surface-border border-round m-2 p-3 item">
@@ -28,14 +28,17 @@
               />
             </div>
           </div>
-          <div class="mb-3 font-medium">{{ slotProps.data.name }}</div>
-          <div class="flex justify-content-between align-items-center buywidth">
+          <div class="mb-3 font-medium">
+            {{ slotProps.data.name }}
+          </div>
+          <div
+            class="flex justify-content-between align-items-center flex-col buywidth"
+          >
             <div class="mt-0 font-semibold text-xl textcenter">
               ${{ slotProps.data.price }}
             </div>
             <span>
-              <!-- <Button icon="pi pi-heart" severity="secondary" outlined /> -->
-              <Button icon="pi pi-shopping-cart" class="ml-2 buybutton">
+              <Button icon="pi pi-shopping-cart" class="ml-2 btn w-full">
                 View Details</Button
               >
             </span>
@@ -82,10 +85,13 @@ onMounted(async () => {
       throw new Error("Failed to fetch products");
     }
     const data = await response.json();
-    const sortedPrducts = data
+    console.log(data);
+    const sortedProducts = data
       .sort((a, b) => b.timestamp - a.timestamp)
       .slice(0, 10);
-    products.value = sortedPrducts;
+    console.log(sortedProducts);
+    products.value = sortedProducts;
+    console.log(products.value);
   } catch (error) {
     console.error(error);
   }
@@ -97,13 +103,12 @@ onMounted(async () => {
   margin: 0;
   padding: 0;
 }
-.card {
-  margin: 0;
-  padding: 0;
+.cards {
   display: flex;
   justify-content: center;
+  padding-bottom: 50px;
 }
-.boks {
+.card {
   display: flex;
   justify-content: center;
   width: 80vw;
@@ -124,7 +129,7 @@ onMounted(async () => {
 .herobillede {
   width: 100vw;
 }
-image {
+img {
   padding: 20px;
 }
 .buybutton {
