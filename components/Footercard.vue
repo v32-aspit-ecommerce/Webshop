@@ -49,7 +49,7 @@
 <style scoped>
 footer {
   background-color: #1f464e;
-  height: 350px;
+  height: 375px;
   width: 100%;
 }
 footer input {
