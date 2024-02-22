@@ -14,7 +14,7 @@
       :numScroll="1"
       :responsiveOptions="responsiveOptions"
       circular
-      :autoplayInterval="3000"
+      :autoplayInterval="30000000"
       :showIndicators="false"
       class="card"
     >
@@ -35,9 +35,9 @@
           <div
             class="flex justify-content-between align-items-center flex-col buywidth"
           >
-            <!-- <p class="font-bold text-gray-500 m-4 truncate flextext">
+            <p class="font-bold text-gray-500 m-4 truncate flextext">
               {{ slotProps.data.title }}
-            </p> -->
+            </p>
             <div class="font-bold text-gray-500 m-4 truncate textcenter">
               Price - ${{ slotProps.data.price }}
             </div>
@@ -117,8 +117,11 @@ h2 {
 .card {
   display: flex;
   justify-content: center;
-  width: 80vw;
+  max-width: 80vw;
   padding: 20px 0;
+}
+.p-carousel-content {
+  justify-content: center;
 }
 .item {
   display: flex;
@@ -126,7 +129,13 @@ h2 {
   justify-content: flex-end;
   align-items: center;
   padding: 0 1rem;
-  height: 205px;
+  height: 245px;
+  max-width: 150px;
+}
+.font-bold {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .thumb {
   display: flex;

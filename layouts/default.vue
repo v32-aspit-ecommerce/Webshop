@@ -10,8 +10,6 @@
   </div>
 </template>
 
-<script setup>
-import 'primeicons/primeicons.css';
-</script>
+<script setup></script>
 
 <style scoped></style>
