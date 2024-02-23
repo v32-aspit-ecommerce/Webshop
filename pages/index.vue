@@ -14,7 +14,7 @@
       :numScroll="1"
       :responsiveOptions="responsiveOptions"
       circular
-      :autoplayInterval="30000000"
+      :autoplayInterval="3000"
       :showIndicators="false"
       class="card"
     >
@@ -130,7 +130,7 @@ h2 {
   align-items: center;
   padding: 0 1rem;
   height: 245px;
-  max-width: 150px;
+  max-width: 235px;
 }
 .font-bold {
   white-space: nowrap;
@@ -147,6 +147,10 @@ h2 {
 }
 .carousel img {
   padding: 20px;
+}
+.p-carousel-item {
+  display: flex;
+  justify-content: center;
 }
 .buybutton {
   width: 100%;
