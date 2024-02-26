@@ -16,10 +16,12 @@
         </NuxtLink>
       </template>
     </Menubar>
-    <div class="login">
-      <img src="https://unsplash.it/40/40" alt="Profil" />
-      <p>Login</p>
-    </div>
+    <a href="login.vue">
+      <div class="login">
+        <img src="https://unsplash.it/40/40" alt="Profil" />
+        <p>Login</p>
+      </div>
+    </a>
   </div>
 </template>
 <script setup>
@@ -58,6 +60,9 @@ const items = ref([
   border-radius: 10px;
   border-color: black;
   border-style: solid;
-  width: 10vw;
+  width: 100px;
+}
+.login img {
+  border-radius: 25px;
 }
 </style>
