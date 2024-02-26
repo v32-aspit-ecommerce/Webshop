@@ -143,7 +143,7 @@ h2 {
   max-width: 150px;
 }
 .herobillede {
-  width: 100vw;
+  width: 100%;
 }
 .carousel img {
   padding: 20px;
