@@ -16,6 +16,10 @@
         </NuxtLink>
       </template>
     </Menubar>
+    <div class="login">
+      <img src="https://unsplash.it/40/40" alt="Profil" />
+      <p>Login</p>
+    </div>
   </div>
 </template>
 <script setup>
@@ -40,5 +44,20 @@ const items = ref([
 <style scoped>
 .router-link-active {
   color: hsl(164, 82%, 39%);
+}
+.card {
+  display: flex;
+  justify-content: space-between;
+}
+.login {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-right: 50px;
+  border: 2px;
+  border-radius: 10px;
+  border-color: black;
+  border-style: solid;
+  width: 10vw;
 }
 </style>
