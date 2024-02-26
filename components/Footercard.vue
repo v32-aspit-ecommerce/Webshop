@@ -49,7 +49,9 @@
   </footer>
 </template>
 
-<script setup></script>
+<script setup>
+import "primeicons/primeicons.css";
+</script>
 
 <style scoped>
 footer {
@@ -59,12 +61,12 @@ footer {
 }
 
 /* Styles the flower pictures in the footer */
-footer img{
+footer img {
   width: 20%;
 }
 
 /* Styles  the Submit button in the footer */
-footer div div div input:last-of-type{
+footer div div div input:last-of-type {
   border-radius: 9999px;
   background-color: #cf9ea9;
 }
@@ -79,7 +81,6 @@ footer input {
   outline-style: solid;
 }
 
-
 /* Styles the in the footer Icons */
 footer i {
   font-size: 3rem;
@@ -88,11 +89,6 @@ footer i {
   height: auto;
   vertical-align: middle;
 }
-
-
-
-
-
 
 /* this class styles the flower pictures in footer in the side */
 .flowers {
@@ -104,10 +100,10 @@ footer i {
   .flowers {
     display: inline;
   }
-  
+
   /* styles the footer so when the flowers are there they are at the side instead of the center */
   footer:first-of-type {
-    justify-content:space-between;
+    justify-content: space-between;
   }
 }
 </style>
