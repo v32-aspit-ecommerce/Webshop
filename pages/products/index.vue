@@ -1,12 +1,6 @@
 <template>
   <div>
-    <CategoryFilter />
-    <div class="grid grid-cols-4 gap-5">
-      <div v-for="p in products">
-        <!-- v-for (to make a foreach loop) each item get in a p to split them all up -->
-        <ProductCard :product="p" />
-      </div>
-    </div>
+    <CategoryFilterFakeAPI />
   </div>
 </template>
 

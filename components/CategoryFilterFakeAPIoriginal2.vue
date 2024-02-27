@@ -11,7 +11,7 @@
             <div class="mx-2">
               <div class="flex">
                 <button @click="clearAllFilters" class="clear-all-btn">
-                  Clear All
+                  Clear Tags
                 </button>
                 <Chips
                   v-model="activeFilters"
@@ -59,7 +59,35 @@
                   />
                 </div>
               </div>
-              <div class="filtercard">Brand (i)</div>
+
+              <div class="filtercard">
+                <h2>Brand - ({{ brandCounts() }})</h2>
+                <!-- Chips for brands -->
+                <div class="flex flex-col">
+                  <div
+                    v-for="brand in brands"
+                    :key="brand"
+                    class="brand"
+                    :class="{
+                      'brand-active': activeBrands.includes(brand),
+                    }"
+                  >
+                    <input
+                      type="checkbox"
+                      :id="brand"
+                      v-model="activeBrands"
+                      :value="brand"
+                    />
+                    <label :for="brand" class="brandlabel">
+                      <div>{{ brand }}</div>
+                      <div class="brandcount">
+                        <p class="brandcounttext">{{ brandCount(brand) }}</p>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
               <div class="filtercard">
                 <h2>Color - ({{ activeColors.length }})</h2>
                 <!-- Chips for farver -->
@@ -119,25 +147,70 @@
 import { ref, computed, watchEffect } from "vue";
 import "primeicons/primeicons.css";
 
+// Testprodukter
+const testProducts = ref([
+  {
+    id: 1,
+    title: "Test Product - Black",
+    price: 25.99,
+    category: "electronics",
+    color: "black",
+    brand: "hyper",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 2,
+    title: "Test Product - Orange",
+    price: 258.99,
+    category: "electronics",
+    color: "orange",
+    brand: "bastion",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 3,
+    title: "Test Product - Cyan",
+    price: 1.99,
+    category: "electronics",
+    color: "cyan",
+    brand: "alfred",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 4,
+    title: "Test Product - Black",
+    price: 25.99,
+    category: "electronics",
+    color: "black",
+    brand: "alfred",
+    image: "https://via.placeholder.com/150",
+  },
+  // Tilføj flere testprodukter efter behov
+]);
+
 // Refs til forskellige filtre og data
 const selectedPrices = ref([]);
 const selectedCategory = ref("");
 const priceRange = ref({ min: 1, max: 1000 });
 const activeFilters = ref([]);
 const activeColors = ref([]);
+const activeBrands = ref([]);
 
 // Beregning af filtrerede produkter
 const filteredProducts = computed(() => {
+  const allProducts = [...products.value, ...testProducts.value];
+
   const isFilterActive =
     selectedPrices.value.length > 0 ||
     (priceRange.value.min > 0 && priceRange.value.max < Infinity) ||
     selectedCategory.value !== "" ||
-    activeColors.value.length > 0;
+    activeColors.value.length > 0 ||
+    activeBrands.value.length > 0;
 
   if (!isFilterActive) {
-    return products.value;
+    return allProducts;
   } else {
-    return products.value.filter(
+    return allProducts.filter(
       (product) =>
         (selectedPrices.value.length === 0 ||
           selectedPrices.value.includes(product.price)) &&
@@ -147,7 +220,9 @@ const filteredProducts = computed(() => {
         (priceRange.value.max === 1000 ||
           product.price <= priceRange.value.max) &&
         (activeColors.value.length === 0 ||
-          activeColors.value.includes(product.color))
+          activeColors.value.includes(product.color)) &&
+        (activeBrands.value.length === 0 ||
+          activeBrands.value.includes(product.brand))
     );
   }
 });
@@ -157,6 +232,11 @@ function removeFilter(filter) {
   const index = activeFilters.value.indexOf(filter);
   if (index !== -1) {
     activeFilters.value.splice(index, 1);
+    if (!colors.includes(filter)) {
+      activeBrands.value = activeBrands.value.filter((b) => b !== filter);
+    } else {
+      activeColors.value = activeColors.value.filter((c) => c !== filter);
+    }
   }
 }
 
@@ -184,6 +264,20 @@ const toggleColor = (color) => {
   }
 };
 
+// Brands til valg
+const brands = ["alfred", "hyper", "bastion", "Peak", "Nike", "Adidas"];
+
+// Funktion til at tilføje/fjerne et brand fra listen over aktive brands
+const toggleBrand = (brand) => {
+  if (activeBrands.value.includes(brand)) {
+    activeBrands.value = activeBrands.value.filter((b) => b !== brand);
+    activeFilters.value = activeFilters.value.filter((f) => f !== brand);
+  } else {
+    activeBrands.value.push(brand);
+    activeFilters.value.push(brand);
+  }
+};
+
 // Metode til at fjerne alle aktive filtre
 const clearAllFilters = () => {
   // Nulstil alle tilstande
@@ -191,6 +285,7 @@ const clearAllFilters = () => {
   selectedCategory.value = "";
   priceRange.value = { min: 1, max: 1000 };
   activeColors.value = [];
+  activeBrands.value = [];
   activeFilters.value = [];
 };
 
@@ -202,24 +297,19 @@ const toggleDisplay = () => {
   displayState.value = displayState.value === "block" ? "none" : "block";
 };
 
+// Funktion til at tælle antallet af produkter for hvert brand
+const brandCount = (brand) =>
+  filteredProducts.value.filter((product) => product.brand === brand).length;
+
+// Funktion til at beregne det samlede antal brands
+const brandCounts = () =>
+  brands.map((brand) => brandCount(brand)).reduce((a, b) => a + b, 0);
+
 watchEffect(() => {
   console.log(selectedPrices.value);
   console.log(filteredProducts.value);
   console.log(colors);
 });
-
-fetch("https://fakestoreapi.com/products", {
-  method: "POST",
-  body: JSON.stringify({
-    title: "test product",
-    price: 13.5,
-    description: "lorem ipsum set",
-    image: "https://i.pravatar.cc",
-    category: "electronic",
-  }),
-})
-  .then((res) => res.json())
-  .then((json) => console.log(json));
 </script>
 
 <style scoped>
@@ -298,5 +388,34 @@ fetch("https://fakestoreapi.com/products", {
 }
 .filter-btn i {
   margin-left: 0.5rem;
+}
+
+.brand {
+  display: flex;
+  padding-top: 0.7rem;
+}
+.brandlabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding-left: 0.7rem;
+  line-height: 25px;
+}
+.brandcount {
+  background-color: lightgray;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+}
+.brandcounttext {
+  display: inline-block;
+  width: 100%; /* Juster bredden efter behov */
+  height: 100%; /* Juster højden efter behov */
+  border-radius: 50%; /* Gør det til en cirkelformet baggrund */
+  text-align: center;
+  line-height: 25px; /* Centrerer ikonet */
+  color: black; /* Farve på ikonet */
+  font-weight: bold;
 }
 </style>

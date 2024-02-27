@@ -4,84 +4,75 @@
     <div class="pb-4">
       <Card>
         <template #content>
-          <div class="flex">
-            <button @click="toggleDisplay" class="filter-btn">
-              Filter<i class="pi pi-chevron-down"></i>
+          <!-- Chip-komponenten viser aktive filtre -->
+          <div class="p-fluid pb-4">
+            <Chips
+              v-model="activeFilters"
+              :removable="true"
+              @remove="removeFilter($event)"
+            ></Chips>
+
+            <button @click="clearAllFilters" class="clear-all-btn">
+              Clear All
             </button>
-            <div class="mx-2">
-              <div class="flex">
-                <button @click="clearAllFilters" class="clear-all-btn">
-                  Clear All
-                </button>
-                <Chips
-                  v-model="activeFilters"
-                  :removable="true"
-                  @remove="removeFilter($event)"
-                ></Chips>
-              </div>
+          </div>
+          <!-- Slider til priser -->
+          <div class="w-44 slidercard px-4 pt-2 pb-6">
+            <p class="pb-2">Pris</p>
+            <div class="pb-4">
+              <!-- Input til minimumspris -->
+              <InputText
+                v-model.number="priceRange.min"
+                class="w-full mb-3 slidercard"
+              />
+              <!-- Slider til minimumspris -->
+              <Slider
+                v-model="priceRange.min"
+                class="w-full"
+                :max="1000"
+                :min="1"
+              />
+            </div>
+
+            <div>
+              <!-- Input til maksimumspris -->
+              <InputText
+                v-model.number="priceRange.max"
+                class="w-full mb-3 slidercard"
+              />
+              <!-- Slider til maksimumspris -->
+              <Slider
+                v-model="priceRange.max"
+                class="w-full"
+                :max="1000"
+                :min="1"
+              />
             </div>
           </div>
-          <div class="mt-4" :style="{ display: displayState }">
-            <!-- Chip-komponenten viser aktive filtre -->
-            <!-- Slider til priser -->
-
-            <!-- Filtrering efter farver -->
-            <div class="flex gap-5 pt-4">
-              <div class="w-1/6 slidercard px-4 pt-2 pb-6">
-                <p class="pb-2">Pris</p>
-                <div class="pb-4">
-                  <!-- Input til minimumspris -->
-                  <InputText
-                    v-model.number="priceRange.min"
-                    class="w-full mb-3 slidercard"
-                  />
-                  <!-- Slider til minimumspris -->
-                  <Slider
-                    v-model="priceRange.min"
-                    class="w-full"
-                    :max="1000"
-                    :min="1"
-                  />
-                </div>
-
-                <div>
-                  <!-- Input til maksimumspris -->
-                  <InputText
-                    v-model.number="priceRange.max"
-                    class="w-full mb-3 slidercard"
-                  />
-                  <!-- Slider til maksimumspris -->
-                  <Slider
-                    v-model="priceRange.max"
-                    class="w-full"
-                    :max="1000"
-                    :min="1"
-                  />
-                </div>
-              </div>
-              <div class="filtercard">Brand (i)</div>
-              <div class="filtercard">
-                <h2>Color - ({{ activeColors.length }})</h2>
-                <!-- Chips for farver -->
-                <div class="flex flex-wrap justify-center">
-                  <div
-                    v-for="color in colors"
-                    :key="color"
-                    class="chip"
-                    :class="{
-                      'chip-active': activeColors.includes(color),
-                      [`bg-${color}`]: true,
-                    }"
-                    @click="toggleColor(color)"
-                  >
-                    <div class="bg-icon" v-if="activeColors.includes(color)">
-                      <i class="pi pi-check"></i>
-                    </div>
+          <!-- Filtrering efter farver -->
+          <div class="flex gap-5 pt-4">
+            <div class="filtercard">Brand (i)</div>
+            <div class="filtercard">
+              <p>Colors</p>
+              <!-- Chips for farver -->
+              <div class="flex flex-wrap justify-center">
+                <div
+                  v-for="color in colors"
+                  :key="color"
+                  class="chip"
+                  :class="{
+                    'chip-active': activeColors.includes(color),
+                    [`bg-${color}`]: true,
+                  }"
+                  @click="toggleColor(color)"
+                >
+                  <div class="bg-icon" v-if="activeColors.includes(color)">
+                    <i class="pi pi-check"></i>
                   </div>
                 </div>
               </div>
-              <div class="filtercard">Size (i)</div>
             </div>
+            <div class="filtercard">Size (i)</div>
           </div>
         </template>
       </Card>
@@ -191,15 +182,6 @@ const clearAllFilters = () => {
   selectedCategory.value = "";
   priceRange.value = { min: 1, max: 1000 };
   activeColors.value = [];
-  activeFilters.value = [];
-};
-
-// Ref til at styre display-tilstanden
-const displayState = ref("block");
-
-// Funktion til at skifte display-tilstand mellem 'block' og 'none'
-const toggleDisplay = () => {
-  displayState.value = displayState.value === "block" ? "none" : "block";
 };
 
 watchEffect(() => {
@@ -207,19 +189,6 @@ watchEffect(() => {
   console.log(filteredProducts.value);
   console.log(colors);
 });
-
-fetch("https://fakestoreapi.com/products", {
-  method: "POST",
-  body: JSON.stringify({
-    title: "test product",
-    price: 13.5,
-    description: "lorem ipsum set",
-    image: "https://i.pravatar.cc",
-    category: "electronic",
-  }),
-})
-  .then((res) => res.json())
-  .then((json) => console.log(json));
 </script>
 
 <style scoped>
@@ -274,29 +243,16 @@ fetch("https://fakestoreapi.com/products", {
 }
 
 .clear-all-btn {
+  margin-top: 10px;
   background-color: #f44336; /* Rød baggrundsfarve */
   color: white;
   border: none;
   padding: 10px 20px;
-  margin-right: 0.7rem;
   border-radius: 5px;
   cursor: pointer;
 }
 
 .clear-all-btn:hover {
   background-color: #d32f2f; /* Mørkere rød baggrundsfarve ved hover */
-}
-
-.filter-btn {
-  display: flex;
-  align-items: center;
-  background-color: hsl(164, 82%, 39%); /* Rød baggrundsfarve */
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.filter-btn i {
-  margin-left: 0.5rem;
 }
 </style>

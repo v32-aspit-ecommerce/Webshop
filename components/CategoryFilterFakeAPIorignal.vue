@@ -11,7 +11,7 @@
             <div class="mx-2">
               <div class="flex">
                 <button @click="clearAllFilters" class="clear-all-btn">
-                  Clear All
+                  Clear Tags
                 </button>
                 <Chips
                   v-model="activeFilters"
@@ -59,7 +59,9 @@
                   />
                 </div>
               </div>
-              <div class="filtercard">Brand (i)</div>
+              <div class="filtercard">
+                <h2>Brand - ({{ activeBrands.length }})</h2>
+              </div>
               <div class="filtercard">
                 <h2>Color - ({{ activeColors.length }})</h2>
                 <!-- Chips for farver -->
@@ -119,6 +121,36 @@
 import { ref, computed, watchEffect } from "vue";
 import "primeicons/primeicons.css";
 
+// Testprodukter
+const testProducts = ref([
+  {
+    id: 1,
+    title: "Test Product - Black",
+    price: 25.99,
+    category: "electronics",
+    color: "black",
+
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 2,
+    title: "Test Product - Orange",
+    price: 258.99,
+    category: "electronics",
+    color: "orange",
+    image: "https://via.placeholder.com/150",
+  },
+  {
+    id: 3,
+    title: "Test Product - Cyan",
+    price: 1.99,
+    category: "electronics",
+    color: "cyan",
+    image: "https://via.placeholder.com/150",
+  },
+  // Tilføj flere testprodukter efter behov
+]);
+
 // Refs til forskellige filtre og data
 const selectedPrices = ref([]);
 const selectedCategory = ref("");
@@ -128,6 +160,8 @@ const activeColors = ref([]);
 
 // Beregning af filtrerede produkter
 const filteredProducts = computed(() => {
+  const allProducts = [...products.value, ...testProducts.value];
+
   const isFilterActive =
     selectedPrices.value.length > 0 ||
     (priceRange.value.min > 0 && priceRange.value.max < Infinity) ||
@@ -135,9 +169,9 @@ const filteredProducts = computed(() => {
     activeColors.value.length > 0;
 
   if (!isFilterActive) {
-    return products.value;
+    return allProducts;
   } else {
-    return products.value.filter(
+    return allProducts.filter(
       (product) =>
         (selectedPrices.value.length === 0 ||
           selectedPrices.value.includes(product.price)) &&
@@ -207,19 +241,6 @@ watchEffect(() => {
   console.log(filteredProducts.value);
   console.log(colors);
 });
-
-fetch("https://fakestoreapi.com/products", {
-  method: "POST",
-  body: JSON.stringify({
-    title: "test product",
-    price: 13.5,
-    description: "lorem ipsum set",
-    image: "https://i.pravatar.cc",
-    category: "electronic",
-  }),
-})
-  .then((res) => res.json())
-  .then((json) => console.log(json));
 </script>
 
 <style scoped>
