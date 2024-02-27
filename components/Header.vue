@@ -37,12 +37,6 @@
         </NuxtLink>
       </template>
     </Menubar>
-    <a href="login.vue">
-      <div class="login">
-        <img src="https://unsplash.it/40/40" alt="Profil" />
-        <p>Login</p>
-      </div>
-    </a>
   </div>
 </template>
 <script setup>

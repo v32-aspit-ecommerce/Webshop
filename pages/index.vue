@@ -19,7 +19,9 @@
       class="card"
     >
       <template #item="slotProps">
-        <div class="border-1 surface-border border-round m-2 p-3 item">
+        <div
+          class="border-1 surface-border border-round m-2 p-3 item itemCenter"
+        >
           <div class="mb-3 image align-middle imgboks">
             <div class="relative">
               <img
@@ -132,11 +134,7 @@ h2 {
   height: 245px;
   max-width: 235px;
 }
-.font-bold {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+
 .thumb {
   display: flex;
   max-height: 150px;
@@ -188,9 +186,9 @@ h2 {
     1px 1px 0 #000;
   text-align: center;
 }
-.flextext {
+.itemCenter {
   display: flex;
-  flex-wrap: wrap;
-  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 </style>
