@@ -12,7 +12,10 @@
     </div>
 
     <div class="flex">
-      <i class="shoppingbag pi pi-shopping-bag"></i>
+      <NuxtLink to="/webshopcheckout">
+        <i class="shoppingbag pi pi-shopping-bag"></i>
+      </NuxtLink>
+
       <div class="login iconcard">
         <i class="userlogo pi pi-user"></i>
 
