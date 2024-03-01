@@ -3,54 +3,126 @@
     <div class="indbetal">
       <div class="centering">
         <h2>Kontakt information</h2>
-        <input type="email" name="email" id="email" placeholder="Email" />
+        <div class="flex flex-column gap-2">
+          <InputText
+            id="email"
+            v-model="value"
+            aria-describedby="email-help"
+            placeholder="Email"
+          />
+        </div>
         <div class="check">
-          <Checkbox v-model="checked" :binary="true" class="check" />
+          <Checkbox v-model="checked" :binary="true" name="ad" class="check" />
           <p>Tilmeld mig opdateringer angående nye tilbud</p>
         </div>
 
         <h2>Shipping</h2>
-        <select name="land" id="land">
-          <option selected value="land">Land</option>
-          <option value="danmark">Danmark</option>
-          <option value="tyskland">Tyskland</option>
-          <option value="sverige">Sverige</option>
-          <option value="norge">Norge</option>
-        </select>
+        <MultiSelect
+          v-model="selectedCountries"
+          :options="countries"
+          optionLabel="name"
+          placeholder="Select Countries"
+          display="chip"
+          class="w-full md:w-20rem"
+        >
+          <template #option="slotProps">
+            <div class="flex align-items-center">
+              <img
+                :alt="slotProps.option.name"
+                src="https://primefaces.org/cdn/primevue/images/flag/flag_placeholder.png"
+                :class="`flag flag-${slotProps.option.code.toLowerCase()} mr-2`"
+                style="width: 18px"
+              />
+              <div>{{ slotProps.option.name }}</div>
+            </div>
+          </template>
+          <template #footer>
+            <div class="py-2 px-3">
+              <b>{{ selectedCountries ? selectedCountries.length : 0 }}</b>
+              item{{
+                (selectedCountries ? selectedCountries.length : 0) > 1
+                  ? "s"
+                  : ""
+              }}
+              selected.
+            </div>
+          </template>
+        </MultiSelect>
         <div>
-          <input type="text" name="fornavn" id="fnavn" placeholder="fornavn" />
-          <input
-            type="text"
-            name="efternavn"
-            id="enavn"
-            placeholder="efternavn"
+          <div class="flex flex-column gap-2">
+            <InputText
+              id="fornavn"
+              v-model="value"
+              aria-describedby="navn-help"
+              placeholder="Fornavn"
+            />
+            <InputText
+              id="efternavn"
+              v-model="value"
+              aria-describedby="efternavn-help"
+              placeholder="Efternavn"
+            />
+          </div>
+        </div>
+        <div class="flex flex-column gap-2">
+          <InputText
+            id="adresse"
+            v-model="value"
+            aria-describedby="adresse-help"
+            placeholder="Adresse"
           />
         </div>
-        <input type="text" name="adresse" id="adresse" placeholder="adresse" />
         <br />
-        <input
-          type="text"
-          name="adressenummer"
-          id="anummer"
-          placeholder="adresse nr."
-        />
-        <div>
-          <input
-            type="number"
-            name="postnummer"
-            id="pnummer"
-            placeholder="postnummer"
+        <div class="flex flex-column gap-2">
+          <InputText
+            id="anummer"
+            v-model="value"
+            aria-describedby="anummer-help"
+            placeholder="Adresse Nr."
           />
-          <input type="text" name="by" id="by" placeholder="by" />
+        </div>
+        <div>
+          <div class="flex flex-column gap-2">
+            <InputNumber
+              id="postnummer"
+              v-model="value"
+              aria-describedby="pnummer-help"
+              placeholder="Postnummer"
+            />
+            <InputText
+              id="by"
+              v-model="value"
+              aria-describedby="by-help"
+              placeholder="By"
+            />
+          </div>
         </div>
         <div class="check">
-          <Checkbox v-model="checked" :binary="true" class="check" />
+          <Checkbox
+            v-model="checked"
+            :binary="true"
+            name="kortinfo"
+            class="check"
+          />
           <p>Gem mine kortinformationer</p>
         </div>
       </div>
     </div>
     <div class="kurv">
-      <div class="produkt"></div>
+      <div class="produkt">
+        <img src="https://unsplash.it/50/50" alt="produktbillede" />
+        <div>
+          <h4>Produktnavn</h4>
+          <p>Farve</p>
+          |
+          <p>Størrelse</p>
+        </div>
+        <h4>Pris</h4>
+      </div>
+      <div class="card flex justify-content-center">
+        <InputText type="text" v-model="value" />
+        <Button label="Submit" />
+      </div>
       <div>
         <p>Subtotal</p>
         <p>Shipping</p>
@@ -63,8 +135,23 @@
 <script setup>
 import Checkbox from "primevue/checkbox";
 import { ref } from "vue";
+import Button from "primevue/button";
 
 const checked = ref(false);
+const selectedCountries = ref();
+const value = ref(null);
+const countries = ref([
+  { name: "Australia", code: "AU" },
+  { name: "Brazil", code: "BR" },
+  { name: "China", code: "CN" },
+  { name: "Egypt", code: "EG" },
+  { name: "France", code: "FR" },
+  { name: "Germany", code: "DE" },
+  { name: "India", code: "IN" },
+  { name: "Japan", code: "JP" },
+  { name: "Spain", code: "ES" },
+  { name: "United States", code: "US" },
+]);
 </script>
 
 <style scoped>
@@ -73,7 +160,7 @@ const checked = ref(false);
   flex-direction: row;
 }
 .indbetal {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(242, 242, 242);
   width: 50vw;
   padding-bottom: 50px;
 }
@@ -83,7 +170,7 @@ const checked = ref(false);
 }
 .kurv {
   width: 50vw;
-  background-color: rgb(242, 242, 242);
+  background-color: rgb(250, 250, 250);
   height: auto;
 }
 .check {
@@ -102,8 +189,19 @@ h2 {
 }
 input {
   border: solid;
-  border-color: rgb(240, 240, 240);
+  border-color: rgb(218, 218, 218);
   width: 45%;
   margin: 10px;
+}
+.p-inputtext {
+  width: 100%;
+}
+.p-inputnumber {
+  margin-left: 10px;
+  height: 30px;
+  width: 100%;
+}
+.flex {
+  align-items: center;
 }
 </style>
