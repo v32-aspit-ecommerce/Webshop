@@ -113,9 +113,11 @@
         <img src="https://unsplash.it/50/50" alt="produktbillede" />
         <div>
           <h4>Produktnavn</h4>
-          <p>Farve</p>
-          |
-          <p>Størrelse</p>
+          <div>
+            <p>Farve</p>
+            |
+            <p>Størrelse</p>
+          </div>
         </div>
         <h4>Pris</h4>
       </div>
@@ -172,6 +174,8 @@ const countries = ref([
   width: 50vw;
   background-color: rgb(250, 250, 250);
   height: auto;
+  display: flex;
+  flex-direction: column;
 }
 .check {
   display: flex;
@@ -202,6 +206,20 @@ input {
   width: 100%;
 }
 .flex {
+  align-items: center;
+}
+.produkt {
+  display: flex;
+  height: 200px;
+}
+.produkt div {
+  display: flex;
+  align-content: space-between;
+}
+.produkt div div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
 }
 </style>
