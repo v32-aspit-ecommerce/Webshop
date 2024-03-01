@@ -12,7 +12,8 @@
     </div>
 
     <div class="flex">
-      <i class="shoppingbag pi pi-shopping-bag"></i>
+      <!-- <i class="shoppingbag pi pi-shopping-bag"></i> -->
+      <Sidebar-cart />
       <div class="login iconcard">
         <i class="userlogo pi pi-user"></i>
 
@@ -42,6 +43,7 @@
 <script setup>
 import { ref } from "vue";
 
+const visibleRight = ref(false);
 const items = ref([
   {
     label: "Home",
@@ -143,12 +145,12 @@ const items = ref([
     display: flex;
   }
 
-  margin-right: 50px;
+  /* margin-right: 50px;
   border: 2px;
   border-radius: 10px;
   border-color: black;
   border-style: solid;
-  width: 100px;
+  width: 100px; */
 }
 .login img {
   border-radius: 25px;

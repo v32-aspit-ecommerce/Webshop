@@ -6,6 +6,7 @@
       <slot />
     </div>
   </div>
+  <sidebar-cart />
 
   <footer>
     <div class="flex justify-center">
