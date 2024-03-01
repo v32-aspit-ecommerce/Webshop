@@ -1,31 +1,61 @@
 <template>
-  <div class="card card1">
-    <div class="search iconcard">
-      <i class="searchicon pi pi-search">
+  <div class="flex hidden md:flex justify-between bg-white items-center pt-6">
+    <div class="search ml-12 h-6 mt-2 iconcard">
+      <i class="ml-2 pi pi-search">
         <input class="searchinput" type="text" />
       </i>
     </div>
     <div class="logo">
       <NuxtLink to="/">
-        <img src="http://placehold.it/250x60?text=hello+world" alt="" />
+        <img
+          class="w-24 md:w-52"
+          src="http://placehold.it/120x40?text=hello+world"
+          alt=""
+        />
       </NuxtLink>
     </div>
 
-    <div class="flex">
+    <div class="mt-2 flex">
       <NuxtLink to="/webshopcheckout">
-        <i class="shoppingbag pi pi-shopping-bag"></i>
+        <i class="shoppingbag mr-6 pi pi-shopping-bag"></i>
       </NuxtLink>
 
-      <div class="login iconcard">
-        <i class="userlogo pi pi-user"></i>
-
+      <div class="login mr-12 iconcard">
+        <i class="rounded-full text-2xl pi pi-user"></i>
         <p>Login</p>
       </div>
     </div>
   </div>
-  <div class="card">
-    <Menubar :model="items">
-      <template #item="{ item, props }">
+
+  <div class="bg-white flex justify-between md:justify-evenly items-center">
+    <div class="flex md:hidden items-center">
+      <div class="mr-4 search ml-4 h-6 mt-2 iconcard">
+        <i class="ml-2 pi pi-search">
+          <input class="searchinput" type="text" />
+        </i>
+      </div>
+      <div class="mr-6 logo">
+        <NuxtLink to="/">
+          <img
+            class="w-24 md:w-52"
+            src="http://placehold.it/120x40?text=hello+world"
+            alt=""
+          />
+        </NuxtLink>
+      </div>
+
+      <div class="mt-2 flex">
+        <NuxtLink to="/webshopcheckout">
+          <i class="mr-2 shoppingbag pi pi-shopping-bag"></i>
+        </NuxtLink>
+
+        <div class="w-10 iconcard">
+          <i class="rounded-full text-xl pi pi-user"></i>
+        </div>
+      </div>
+    </div>
+    <Menubar class="test" :model="items">
+      <template class="" #item="{ item, props }">
         <NuxtLink v-slot="{ href, navigate, isActive }" :to="item.to" custom>
           <a
             v-ripple
@@ -82,54 +112,6 @@ const items = ref([
 </script>
 
 <style scoped>
-.userlogo {
-  font-size: 1.5rem;
-  border-radius: 999px;
-}
-
-.router-link-active {
-  color: hsl(164, 82%, 39%);
-}
-
-.card {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.card1 {
-  display: none;
-  justify-content: space-between;
-  margin-top: 1.3rem;
-}
-
-.searchicon {
-  margin-left: 5px;
-}
-
-.searchinput {
-  width: 87%;
-}
-
-.shoppingbag {
-  margin-top: 1.3rem;
-  margin-right: 2rem;
-  font-size: 1.7rem;
-}
-
-.search {
-  height: 2vw;
-  width: 15vw;
-  margin-top: 10px;
-  margin-left: 50px;
-}
-
-.login {
-  height: 4vw;
-  width: 10vw;
-  margin-right: 50px;
-}
-
 .iconcard {
   display: flex;
   justify-content: space-evenly;
@@ -138,22 +120,35 @@ const items = ref([
   border: 2px;
   border-style: solid;
   border-radius: 10px;
-  margin-top: 10px;
+}
+
+.shoppingbag {
+  margin-top: 1.3rem;
+
+  font-size: 1.7rem;
+}
+
+.router-link-active {
+  color: hsl(164, 82%, 39%);
+}
+.searchinput {
+  width: 84%;
+}
+.search {
+  width: 25vw;
+}
+.login {
+  width: 10vw;
+}
+.test {
+  width: 22vw;
+  display: flex;
+  justify-content: end;
 }
 
 @media screen and (min-width: 962px) {
-  .card1 {
-    display: flex;
+  .test {
+    width: auto;
   }
-
-  margin-right: 50px;
-  border: 2px;
-  border-radius: 10px;
-  border-color: black;
-  border-style: solid;
-  width: 100px;
-}
-.login img {
-  border-radius: 25px;
 }
 </style>
