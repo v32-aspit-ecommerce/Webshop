@@ -5,6 +5,9 @@
         <input class="searchinput" type="text" />
       </i>
     </div>
+
+    <sidebar-cart />
+
     <div class="logo">
       <NuxtLink to="/">
         <img

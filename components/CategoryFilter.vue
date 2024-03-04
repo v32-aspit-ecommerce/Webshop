@@ -187,7 +187,7 @@ import "primeicons/primeicons.css";
 // Testproducts is a placeholder for the products from the API with all the diffrents filters on it
 const testProducts = ref([
   {
-    id: 1,
+    id: 21,
     title: "black Testprodukt",
     price: 25.99,
     category: "elektronik",
@@ -197,7 +197,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 2,
+    id: 22,
     title: "Orange Testprodukt",
     price: 258.99,
     category: "elektronik",
@@ -207,7 +207,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 3,
+    id: 23,
     title: "cyan Testprodukt",
     price: 1.99,
     category: "elektronik",
@@ -217,7 +217,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 4,
+    id: 24,
     title: "gray Testprodukt",
     price: 99.99,
     category: "elektronik",
@@ -227,7 +227,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 5,
+    id: 25,
     title: "pink Testprodukt",
     price: 49.99,
     category: "elektronik",
@@ -237,7 +237,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 6,
+    id: 26,
     title: "black Testprodukt 2",
     price: 59.99,
     category: "elektronik",
@@ -247,7 +247,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 7,
+    id: 27,
     title: "orange Testprodukt 2",
     price: 15.99,
     category: "elektronik",
@@ -257,7 +257,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 8,
+    id: 28,
     title: "cyan Testprodukt 2",
     price: 29.99,
     category: "elektronik",
@@ -267,7 +267,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 9,
+    id: 29,
     title: "gray Testprodukt 2",
     price: 199.99,
     category: "elektronik",
@@ -277,7 +277,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 10,
+    id: 30,
     title: "Pink Testprodukt 2",
     price: 5.99,
     category: "elektronik",

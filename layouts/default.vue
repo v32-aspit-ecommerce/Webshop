@@ -5,8 +5,6 @@
     <slot />
   </div>
 
-  <sidebar-cart />
-
   <div class="flex justify-center">
     <Footercard />
   </div>
