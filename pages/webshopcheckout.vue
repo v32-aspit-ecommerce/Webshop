@@ -122,8 +122,7 @@
             <InputNumber
               v-model="antal"
               showButtons
-              buttonLayout="vertical"
-              style="width: 3rem"
+              buttonLayout="horizontal"
               :min="1"
               :max="99"
             >
@@ -135,7 +134,7 @@
               </template>
             </InputNumber>
           </div>
-          <h4>Pris</h4>
+          <h4>99,-</h4>
         </div>
         <div class="flex justify-content-center kupon">
           <InputText type="text" v-model="value" />
@@ -249,9 +248,10 @@ input {
 .produktinfo {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
-.produktinfo p.inputtext {
-  width: 50px;
+.produktinfo .p-inputnumber-input {
+  width: 20px;
 }
 .produkt div div {
   display: flex;
