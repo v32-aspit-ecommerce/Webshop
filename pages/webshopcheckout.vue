@@ -109,26 +109,52 @@
       </div>
     </div>
     <div class="kurv">
-      <div class="produkt">
-        <img src="https://unsplash.it/100/100" alt="produktbillede" />
+      <div class="centering">
+        <div class="produkt">
+          <img src="https://unsplash.it/100/100" alt="produktbillede" />
+          <div class="produktinfo">
+            <h4>Produktnavn</h4>
+            <div>
+              <p>Farve</p>
+              |
+              <p>Størrelse</p>
+            </div>
+            <InputNumber
+              v-model="antal"
+              showButtons
+              buttonLayout="vertical"
+              style="width: 3rem"
+              :min="1"
+              :max="99"
+            >
+              <template #incrementbuttonicon>
+                <span class="pi pi-plus" />
+              </template>
+              <template #decrementbuttonicon>
+                <span class="pi pi-minus" />
+              </template>
+            </InputNumber>
+          </div>
+          <h4>Pris</h4>
+        </div>
+        <div class="flex justify-content-center kupon">
+          <InputText type="text" v-model="value" />
+          <Button label="Apply" class="apply" />
+        </div>
         <div>
-          <h4>Produktnavn</h4>
-          <div>
-            <p>Farve</p>
-            |
-            <p>Størrelse</p>
+          <div class="stats">
+            <p>Subtotal</p>
+            <p>99,-</p>
+          </div>
+          <div class="stats">
+            <p>Shipping</p>
+            <p>Free</p>
+          </div>
+          <div class="stats">
+            <p>Total</p>
+            <p>99,-</p>
           </div>
         </div>
-        <h4>Pris</h4>
-      </div>
-      <div class="card flex justify-content-center kupon">
-        <InputText type="text" v-model="value" />
-        <Button label="Submit" />
-      </div>
-      <div>
-        <p>Subtotal</p>
-        <p>Shipping</p>
-        <p>Total</p>
       </div>
     </div>
   </div>
@@ -142,6 +168,7 @@ import Button from "primevue/button";
 const checked = ref(false);
 const selectedCountries = ref();
 const value = ref(null);
+const antal = ref(1);
 const countries = ref([
   { name: "Australia", code: "AU" },
   { name: "Brazil", code: "BR" },
@@ -200,7 +227,7 @@ input {
 .p-inputtext {
   width: 100%;
 }
-.p-inputnumber {
+.centering div div .p-inputnumber {
   margin-left: 10px;
   height: 30px;
   width: 100%;
@@ -210,7 +237,6 @@ input {
 }
 .produkt {
   display: flex;
-  height: 200px;
 }
 .produkt img {
   margin: 10px;
@@ -220,6 +246,13 @@ input {
   display: flex;
   align-content: space-between;
 }
+.produktinfo {
+  display: flex;
+  flex-direction: column;
+}
+.produktinfo p.inputtext {
+  width: 50px;
+}
 .produkt div div {
   display: flex;
   flex-direction: row;
@@ -228,5 +261,17 @@ input {
 }
 .kupon {
   height: 50px;
+  background-color: rgb(250, 250, 250);
+}
+.produktinfo button {
+  width: 20px;
+}
+.apply {
+  width: 10%;
+  background-color: rgb(203, 186, 211);
+}
+.stats {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
