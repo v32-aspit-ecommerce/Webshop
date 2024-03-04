@@ -110,7 +110,7 @@
     </div>
     <div class="kurv">
       <div class="produkt">
-        <img src="https://unsplash.it/50/50" alt="produktbillede" />
+        <img src="https://unsplash.it/100/100" alt="produktbillede" />
         <div>
           <h4>Produktnavn</h4>
           <div>
@@ -121,7 +121,7 @@
         </div>
         <h4>Pris</h4>
       </div>
-      <div class="card flex justify-content-center">
+      <div class="card flex justify-content-center kupon">
         <InputText type="text" v-model="value" />
         <Button label="Submit" />
       </div>
@@ -212,6 +212,10 @@ input {
   display: flex;
   height: 200px;
 }
+.produkt img {
+  margin: 10px;
+  border-radius: 10px;
+}
 .produkt div {
   display: flex;
   align-content: space-between;
@@ -221,5 +225,8 @@ input {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+}
+.kupon {
+  height: 50px;
 }
 </style>
