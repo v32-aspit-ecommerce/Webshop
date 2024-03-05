@@ -160,6 +160,9 @@
           <p class="font-bold text-gray-500 m-4 truncate">
             Price - ${{ product.price }}
           </p>
+          <button class="btn">
+            <i class="pi pi-shopping-cart"> - id - {{ product.id }}</i>
+          </button>
           <NuxtLink :to="`/products/${product.id}`">
             <p class="btn my-4">View Details</p>
           </NuxtLink>
@@ -410,9 +413,9 @@ const { data: products } = await useAsyncData(() =>
 );
 
 // Add an 'id' property to each product object
-products.value.forEach((product, index) => {
-  product.id = index + 1;
-});
+// products.value.forEach((product, index) => {
+//   product.id = index + 1;
+// });
 
 // COLOR SECTION
 

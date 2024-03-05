@@ -23,6 +23,7 @@ const uri = "https://fakestoreapi.com/products/" + id; // know we know what id g
 
 //fetch the products
 const { data: product } = await useFetch(uri, { key: id }); // Get all the item content from uri and put it in a array to filter content out
+
 //Filter to cart
 const selectedProducts = ref([]);
 </script>
