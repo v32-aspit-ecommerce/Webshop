@@ -1,6 +1,9 @@
 <template>
   <div class="back">
     <div class="indbetal">
+      <div class="flex justify-content-center">
+        <Breadcrumb :home="home" :model="items" />
+      </div>
       <div class="centering">
         <h2>Kontakt information</h2>
         <div class="flex flex-column gap-2">
@@ -134,7 +137,10 @@
               </template>
             </InputNumber>
           </div>
-          <h4>99,-</h4>
+          <div class="delete">
+            <h4>99,-</h4>
+            <Button icon="pi pi-trash" />
+          </div>
         </div>
         <div class="flex justify-content-center kupon">
           <InputText type="text" v-model="value" />
@@ -163,6 +169,7 @@
 import Checkbox from "primevue/checkbox";
 import { ref } from "vue";
 import Button from "primevue/button";
+import Breadcrumb from "primevue/breadcrumb";
 
 const checked = ref(false);
 const selectedCountries = ref();
@@ -180,6 +187,10 @@ const countries = ref([
   { name: "Spain", code: "ES" },
   { name: "United States", code: "US" },
 ]);
+const home = ref({
+  icon: "pi pi-home",
+});
+const items = ref([{ label: "Webshop" }]);
 </script>
 
 <style scoped>
@@ -192,9 +203,19 @@ const countries = ref([
   width: 50vw;
   padding-bottom: 50px;
 }
+.indbetal div:nth-child(1) {
+  height: 100px;
+}
+.indbetal div nav {
+  background-color: transparent;
+}
+
 .centering {
   width: 80%;
-  margin: auto;
+  margin: 0 auto;
+}
+.centering:nth-of-type(1) {
+  margin-top: 100px;
 }
 .kurv {
   width: 50vw;
@@ -243,7 +264,7 @@ input {
 }
 .produkt div {
   display: flex;
-  align-content: space-between;
+  justify-content: space-between;
 }
 .produktinfo {
   display: flex;
@@ -273,5 +294,10 @@ input {
 .stats {
   display: flex;
   justify-content: space-between;
+}
+.delete {
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3px;
 }
 </style>
