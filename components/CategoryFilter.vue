@@ -198,12 +198,12 @@ const cart = useState("shoppingcart", () => {
   return [];
 });
 
-//find ud af hvordan jeg gemmer ting i localstorage
-// brug splice til delete funtionen
-
 function addToCart(product) {
   cart.value.push(product);
 }
+
+//find ud af hvordan jeg gemmer ting i localstorage
+// brug splice til delete funtionen
 
 // This block of code is used to import specific exports from the 'vue' and 'primeicons' libraries.
 

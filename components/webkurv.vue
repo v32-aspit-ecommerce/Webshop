@@ -52,7 +52,12 @@
   </div>
   <div v-for="item in cart" :key="item.id">
     <h2>{{ item.title }}</h2>
-    <p>Price - ${{ item.price }}</p>
+    <p>Price - ${{ item.price.toFixed(2) }}</p>
+    <button class="btn bg-red-400" @click="removeFromCart(item)">Delete</button>
+    <hr class="mt-1" />
+  </div>
+  <div>
+    <h3>Total Price: ${{ totalPrice.toFixed(2) }}</h3>
   </div>
 </template>
 
@@ -62,6 +67,17 @@ import Button from "primevue/button";
 const value = ref(null);
 const antal = ref(1);
 const cart = useState("shoppingcart");
+
+const removeFromCart = (itemToRemove) => {
+  const index = cart.value.findIndex((item) => item === itemToRemove);
+  if (index !== -1) {
+    cart.value.splice(index, 1);
+  }
+};
+
+const totalPrice = computed(() => {
+  return cart.value.reduce((total, item) => total + item.price, 0);
+});
 </script>
 
 <style scoped></style>

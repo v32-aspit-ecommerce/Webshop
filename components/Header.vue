@@ -6,8 +6,6 @@
       </i>
     </div>
 
-    <sidebar-cart />
-
     <div class="logo">
       <NuxtLink to="/">
         <img
@@ -19,9 +17,7 @@
     </div>
 
     <div class="mt-2 flex">
-      <NuxtLink to="/webshopcheckout">
-        <i class="shoppingbag mr-6 pi pi-shopping-bag"></i>
-      </NuxtLink>
+      <sidebar-cart />
 
       <div class="login mr-12 iconcard">
         <i class="rounded-full text-2xl pi pi-user"></i>
