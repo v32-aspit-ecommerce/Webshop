@@ -146,6 +146,29 @@
       </Card>
     </div>
 
+    <!-- <div v-if="filteredProducts.length > 0">
+      <div class="grid grid-cols-4 gap-5">
+        <div
+          v-for="product in filteredProducts"
+          :key="product.id"
+          class="card text-center"
+        >
+          <img :src="product.image" alt="product thumb" class="thumb" />
+          <p class="font-bold text-gray-500 m-4 truncate">
+            {{ product.title }}
+          </p>
+          <p class="font-bold text-gray-500 m-4 truncate">
+            Price - ${{ product.price }}
+          </p>
+          <button @click="addToCart(product)">Buy</button>
+          <NuxtLink :to="`/products/${product.id}`">
+            <p class="btn my-4">View Details</p>
+          </NuxtLink>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Display Cart Items -->
     <div v-if="filteredProducts.length > 0">
       <div class="grid grid-cols-4 gap-5">
         <div
@@ -171,6 +194,17 @@
 </template>
 
 <script setup>
+const cart = useState("shoppingcart", () => {
+  return [];
+});
+
+//find ud af hvordan jeg gemmer ting i localstorage
+// brug splice til delete funtionen
+
+function addToCart(product) {
+  cart.value.push(product);
+}
+
 // This block of code is used to import specific exports from the 'vue' and 'primeicons' libraries.
 
 // 1. 'ref', 'computed', and 'watchEffect' are imported from 'vue'. These are functions provided by Vue.js for creating reactive references, computed properties, and side effects respectively.
@@ -192,7 +226,7 @@ function addToCart(product) {
 // Testproducts is a placeholder for the products from the API with all the diffrents filters on it
 const testProducts = ref([
   {
-    id: 1,
+    id: 21,
     title: "black Testprodukt",
     price: 25.99,
     category: "elektronik",
@@ -202,7 +236,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 2,
+    id: 22,
     title: "Orange Testprodukt",
     price: 258.99,
     category: "elektronik",
@@ -212,7 +246,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 3,
+    id: 23,
     title: "cyan Testprodukt",
     price: 1.99,
     category: "elektronik",
@@ -222,7 +256,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 4,
+    id: 24,
     title: "gray Testprodukt",
     price: 99.99,
     category: "elektronik",
@@ -232,7 +266,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 5,
+    id: 25,
     title: "pink Testprodukt",
     price: 49.99,
     category: "elektronik",
@@ -242,7 +276,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 6,
+    id: 26,
     title: "black Testprodukt 2",
     price: 59.99,
     category: "elektronik",
@@ -252,7 +286,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 7,
+    id: 27,
     title: "orange Testprodukt 2",
     price: 15.99,
     category: "elektronik",
@@ -262,7 +296,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 8,
+    id: 28,
     title: "cyan Testprodukt 2",
     price: 29.99,
     category: "elektronik",
@@ -272,7 +306,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 9,
+    id: 29,
     title: "gray Testprodukt 2",
     price: 199.99,
     category: "elektronik",
@@ -282,7 +316,7 @@ const testProducts = ref([
     image: "https://via.placeholder.com/150",
   },
   {
-    id: 10,
+    id: 30,
     title: "Pink Testprodukt 2",
     price: 5.99,
     category: "elektronik",
@@ -415,9 +449,9 @@ const { data: products } = await useAsyncData(() =>
 );
 
 // Add an 'id' property to each product object
-products.value.forEach((product, index) => {
-  product.id = index + 1;
-});
+// products.value.forEach((product, index) => {
+//   product.id = index + 1;
+// });
 
 // COLOR SECTION
 

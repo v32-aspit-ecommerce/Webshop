@@ -14,6 +14,9 @@
   </footer>
 </template>
 
+<script setup>
+import "primeicons/primeicons.css";
+</script>
 <style scoped>
 .router-link-exact-active {
   color: #12b488;
