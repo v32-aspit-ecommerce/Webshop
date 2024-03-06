@@ -190,21 +190,21 @@
         </div>
       </div>
     </div>
-
-    <!-- Display Cart Items -->
-    <div v-for="item in cart" :key="item.id">
-      <h2>{{ item.title }}</h2>
-      <p>Price - ${{ item.price }}</p>
-    </div>
   </div>
 </template>
 
 <script setup>
-const cart = ref([]);
+const cart = useState("shoppingcart", () => {
+  return [];
+});
+
+//find ud af hvordan jeg gemmer ting i localstorage
+// brug splice til delete funtionen
 
 function addToCart(product) {
   cart.value.push(product);
 }
+
 // This block of code is used to import specific exports from the 'vue' and 'primeicons' libraries.
 
 // 1. 'ref', 'computed', and 'watchEffect' are imported from 'vue'. These are functions provided by Vue.js for creating reactive references, computed properties, and side effects respectively.
