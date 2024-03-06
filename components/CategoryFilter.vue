@@ -160,14 +160,12 @@
           <p class="font-bold text-gray-500 m-4 truncate">
             Price - ${{ product.price }}
           </p>
+          <button @click="addToCart(product)">Buy</button>
           <NuxtLink :to="`/products/${product.id}`">
             <p class="btn my-4">View Details</p>
           </NuxtLink>
         </div>
       </div>
-    </div>
-    <div v-else>
-      <p>No products found.</p>
     </div>
   </div>
 </template>
@@ -184,6 +182,13 @@ import { ref, computed, watchEffect } from "vue";
 // Importing PrimeIcons CSS for using icons in the application
 import "primeicons/primeicons.css";
 
+const cart = useState("shoppingcart", () => {
+  return [];
+});
+
+function addToCart(product) {
+  cart.value.push(product);
+}
 // Testproducts is a placeholder for the products from the API with all the diffrents filters on it
 const testProducts = ref([
   {
