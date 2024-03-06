@@ -50,6 +50,10 @@
       </div>
     </div>
   </div>
+  <div v-for="item in cart" :key="item.id">
+    <h2>{{ item.title }}</h2>
+    <p>Price - ${{ item.price }}</p>
+  </div>
 </template>
 
 <script setup>

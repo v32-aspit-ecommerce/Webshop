@@ -216,13 +216,6 @@ import { ref, computed, watchEffect } from "vue";
 // Importing PrimeIcons CSS for using icons in the application
 import "primeicons/primeicons.css";
 
-const cart = useState("shoppingcart", () => {
-  return [];
-});
-
-function addToCart(product) {
-  cart.value.push(product);
-}
 // Testproducts is a placeholder for the products from the API with all the diffrents filters on it
 const testProducts = ref([
   {
