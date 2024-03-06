@@ -146,6 +146,29 @@
       </Card>
     </div>
 
+    <!-- <div v-if="filteredProducts.length > 0">
+      <div class="grid grid-cols-4 gap-5">
+        <div
+          v-for="product in filteredProducts"
+          :key="product.id"
+          class="card text-center"
+        >
+          <img :src="product.image" alt="product thumb" class="thumb" />
+          <p class="font-bold text-gray-500 m-4 truncate">
+            {{ product.title }}
+          </p>
+          <p class="font-bold text-gray-500 m-4 truncate">
+            Price - ${{ product.price }}
+          </p>
+          <button @click="addToCart(product)">Buy</button>
+          <NuxtLink :to="`/products/${product.id}`">
+            <p class="btn my-4">View Details</p>
+          </NuxtLink>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- Display Cart Items -->
     <div v-if="filteredProducts.length > 0">
       <div class="grid grid-cols-4 gap-5">
         <div
@@ -160,22 +183,28 @@
           <p class="font-bold text-gray-500 m-4 truncate">
             Price - ${{ product.price }}
           </p>
-          <button class="btn">
-            <i class="pi pi-shopping-cart"> - id - {{ product.id }}</i>
-          </button>
+          <button @click="addToCart(product)">Buy</button>
           <NuxtLink :to="`/products/${product.id}`">
             <p class="btn my-4">View Details</p>
           </NuxtLink>
         </div>
       </div>
     </div>
-    <div v-else>
-      <p>No products found.</p>
+
+    <!-- Display Cart Items -->
+    <div v-for="item in cart" :key="item.id">
+      <h2>{{ item.title }}</h2>
+      <p>Price - ${{ item.price }}</p>
     </div>
   </div>
 </template>
 
 <script setup>
+const cart = ref([]);
+
+function addToCart(product) {
+  cart.value.push(product);
+}
 // This block of code is used to import specific exports from the 'vue' and 'primeicons' libraries.
 
 // 1. 'ref', 'computed', and 'watchEffect' are imported from 'vue'. These are functions provided by Vue.js for creating reactive references, computed properties, and side effects respectively.
