@@ -117,8 +117,8 @@
         <p>Price - ${{ item.price }}</p>
       </div>
     </div>
+    <webkurv />
   </div>
-  <webkurv />
 </template>
 
 <script setup>
