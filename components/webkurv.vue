@@ -3,7 +3,12 @@
     <div class="centering">
       <div class="produkt">
         <img src="https://unsplash.it/100/100" alt="produktbillede" />
-        <div class="produktinfo">
+        <div class="produktinfo"><div v-for="item in cart" :key="item.id">
+    <h2>{{ item.title }}</h2>
+    <p>Price - ${{ item.price.toFixed(2) }}</p>
+    <button class="btn bg-red-400" @click="removeFromCart(item)">Delete</button>
+    <hr class="mt-1" />
+  </div>
           <h4>Produktnavn</h4>
           <div>
             <p>Farve</p>
@@ -50,12 +55,7 @@
       </div>
     </div>
   </div>
-  <div v-for="item in cart" :key="item.id">
-    <h2>{{ item.title }}</h2>
-    <p>Price - ${{ item.price.toFixed(2) }}</p>
-    <button class="btn bg-red-400" @click="removeFromCart(item)">Delete</button>
-    <hr class="mt-1" />
-  </div>
+  
   <div>
     <h3>Total Price: ${{ totalPrice.toFixed(2) }}</h3>
   </div>
@@ -80,4 +80,8 @@ const totalPrice = computed(() => {
 });
 </script>
 
-<style scoped></style>
+<style>
+.produktinfo .p-inputnumber-input {
+  width: 40px;
+}
+</style>

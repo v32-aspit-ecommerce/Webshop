@@ -9,15 +9,17 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
+
   "devDependencies": {
-    "@nuxtjs/tailwindcss": "^6.11.2",
-    "nuxt": "^3.10.1",
-    "nuxt-primevue": "^0.2.2",
-    "vue": "^3.4.15",
-    "vue-router": "^4.2.5"
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/tailwindcss": "^6.8.1",
+    "nuxt": "^3.8.0",
+    "nuxt-primevue": "^0.2.2"
   },
   "dependencies": {
     "primeicons": "^6.0.1",
-    "primevue": "^3.47.2"
+    "vue": "^3.3.7",
+    "vue-router": "^4.2.5",
+    "primevue": "^3.44.0"
   }
 }

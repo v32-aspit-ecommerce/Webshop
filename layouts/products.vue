@@ -16,8 +16,10 @@
 
 <script setup>
 import "primeicons/primeicons.css";
+
 </script>
 <style scoped>
+@import url("~/assets/css/base.css");
 .router-link-exact-active {
   color: #12b488;
 }
