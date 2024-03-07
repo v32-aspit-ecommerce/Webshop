@@ -57,7 +57,7 @@
             </div>
           </div>
         </div>
-        <Menubar class="test" :model="items">
+        <Menubar class="test dark:bg-white dark:border-0 border-0 bg-white" :model="items">
           <template class="" #item="{ item, props }">
             <NuxtLink
               v-slot="{ href, navigate, isActive }"
@@ -99,19 +99,19 @@ const items = ref([
   },
   {
     label: "Gift Boxes",
-    to: "/GiftBoxes",
+    to: "/giftboxes",
   },
   {
     label: "Gift Card",
-    to: "/GiftCard",
+    to: "/giftcards",
   },
   {
     label: "About Us",
-    to: "/AboutUs",
+    to: "/about",
   },
   {
     label: "Contact",
-    to: "/Contact",
+    to: "/contact",
   },
   {
     label: "Blog",
@@ -151,7 +151,7 @@ const items = ref([
 .test {
   width: 22vw;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 @media screen and (min-width: 962px) {
