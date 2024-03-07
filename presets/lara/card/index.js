@@ -6,8 +6,8 @@ export default {
             'shadow-md',
 
             //Color
-            'bg-surface-0 dark:bg-surface-900',
-            'text-surface-700 dark:text-surface-0'
+            'bg-surface-0 ',
+            'text-surface-700 '
         ]
     },
     body: {

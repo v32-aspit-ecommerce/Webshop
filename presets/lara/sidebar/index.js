@@ -15,13 +15,12 @@ export default {
             },
 
             // Shape
-            'border-0 dark:border',
+            'border-0 ',
             'shadow-lg',
 
             // Colors
-            'bg-surface-0 dark:bg-surface-800',
-            'text-surface-700 dark:text-white/80',
-            'dark:border-surface-700',
+            'bg-surface-0 ',
+            'text-surface-700 ',
 
             // Transitions
             'transition-transform',
@@ -41,8 +40,8 @@ export default {
             'p-5',
 
             // Colors
-            'bg-surface-0 dark:bg-surface-800',
-            'text-surface-700 dark:text-surface-0/80'
+            'bg-surface-0 ',
+            'text-surface-700'
         ]
     },
     title: {
@@ -75,10 +74,10 @@ export default {
             'transition duration-200 ease-in-out',
 
             // States
-            'hover:text-surface-700 dark:hover:text-white/80',
-            'hover:bg-surface-100 dark:hover:bg-surface-800/80',
+            'hover:text-surface-700 ',
+            'hover:bg-surface-100 0',
             'focus:outline-none focus:outline-offset-0 focus:ring focus:ring-inset',
-            'focus:ring-primary-400/50 dark:focus:ring-primary-300/50',
+            'focus:ring-primary-400/50 ',
 
             // Misc
             'overflow-hidden'
