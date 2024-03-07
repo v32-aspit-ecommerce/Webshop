@@ -1,18 +1,21 @@
 <template>
-  <div class="py-3 flex">
+  <div class="py-3 flex sidecart">
     <Sidebar
       v-model:visible="visibleRight"
       header="Your Cart"
       position="right"
-      class="w-96"
+      class="sidebarwidth"
     >
       <div>
         <webkurv />
-        <div class="flex flex-col">
-          <NuxtLink class="btn mb-2" to="/webshopcheckout">
+        <div class="flex flex-col items-center">
+          <NuxtLink
+            class="btn mt-8 mb-2 w-40 text-center"
+            to="/webshopcheckout"
+          >
             Check Out
           </NuxtLink>
-          <Button class="btn" @click="visibleRight = false"
+          <Button class="btn w-40" @click="visibleRight = false"
             >Continue Shopping</Button
           >
         </div>
@@ -32,11 +35,17 @@ const cart = useState("shoppingcart");
 const visibleRight = ref(false);
 </script>
 
-<style scoped>
+<style>
 button {
   transition: 1s;
 }
 button:hover {
   background-color: grey;
+}
+.sidebarwidth {
+  width: 600px;
+}
+.sidecart .p-sidebar {
+  width: 600px;
 }
 </style>
