@@ -1,74 +1,84 @@
 <template>
-  <div class="flex hidden md:flex justify-between bg-white items-center pt-6">
-    <div class="search ml-12 h-6 mt-2 iconcard">
-      <i class="ml-2 pi pi-search">
-        <input class="searchinput" type="text" />
-      </i>
-    </div>
+  <div class="bg-white">
+    <div class="container mx-auto">
+      <div
+        class="flex hidden md:flex justify-between bg-white items-center pt-6"
+      >
+        <div class="ml-4 h-6 mt-2 iconcard">
+          <i class="ml-2 pi pi-search">
+            <input class="searchinput" type="text" />
+          </i>
+        </div>
 
-    <div class="logo">
-      <NuxtLink to="/">
-        <img
-          class="w-24 md:w-52"
-          src="http://placehold.it/120x40?text=hello+world"
-          alt=""
-        />
-      </NuxtLink>
-    </div>
+        <div class="logo">
+          <NuxtLink to="/">
+            <img
+              class="w-24"
+              src="../assets/img/logoconcept-cutout2 1.png"
+              alt=""
+            />
+          </NuxtLink>
+        </div>
 
-    <div class="mt-2 flex">
-      <sidebar-cart />
+        <div class="mt-2 flex">
+          <sidebar-cart />
 
-      <div class="login mr-12 iconcard">
-        <i class="rounded-full text-2xl pi pi-user"></i>
-        <p>Login</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="bg-white flex justify-between md:justify-evenly items-center">
-    <div class="flex md:hidden items-center">
-      <div class="mr-4 search ml-4 h-6 mt-2 iconcard">
-        <i class="ml-2 pi pi-search">
-          <input class="searchinput" type="text" />
-        </i>
-      </div>
-      <div class="mr-6 logo">
-        <NuxtLink to="/">
-          <img
-            class="w-24 md:w-52"
-            src="http://placehold.it/120x40?text=hello+world"
-            alt=""
-          />
-        </NuxtLink>
-      </div>
-
-      <div class="mt-2 flex">
-        <NuxtLink to="/webshopcheckout">
-          <i class="mr-2 shoppingbag pi pi-shopping-bag"></i>
-        </NuxtLink>
-
-        <div class="w-10 iconcard">
-          <i class="rounded-full text-xl pi pi-user"></i>
+          <div class="login mr-4 iconcard">
+            <i class="rounded-full text-2xl pi pi-user"></i>
+            <p>Login</p>
+          </div>
         </div>
       </div>
+
+      <div class="bg-white flex justify-between md:justify-evenly items-center">
+        <div class="flex md:hidden items-center">
+          <div class="mr-4 search ml-4 h-6 mt-2 iconcard">
+            <i class="ml-2 pi pi-search">
+              <input class="searchinput" type="text" />
+            </i>
+          </div>
+          <div class="mr-6 logo">
+            <NuxtLink to="/">
+              <img
+                class="w-24"
+                src="../assets/img/logoconcept-cutout2 1.png"
+                alt=""
+              />
+            </NuxtLink>
+          </div>
+
+          <div class="mt-2 flex">
+            <NuxtLink to="/webshopcheckout">
+              <i class="mr-2 shoppingbag pi pi-shopping-bag"></i>
+            </NuxtLink>
+
+            <div class="w-10 iconcard">
+              <i class="rounded-full text-xl pi pi-user"></i>
+            </div>
+          </div>
+        </div>
+        <Menubar class="test" :model="items">
+          <template class="" #item="{ item, props }">
+            <NuxtLink
+              v-slot="{ href, navigate, isActive }"
+              :to="item.to"
+              custom
+            >
+              <a
+                v-ripple
+                :href="href"
+                v-bind="props.action"
+                @click="navigate"
+                :class="[isActive && 'router-link-active']"
+              >
+                <span :class="item.icon" />
+                <span class="ml-2">{{ item.label }}</span>
+              </a>
+            </NuxtLink>
+          </template>
+        </Menubar>
+      </div>
     </div>
-    <Menubar class="test" :model="items">
-      <template class="" #item="{ item, props }">
-        <NuxtLink v-slot="{ href, navigate, isActive }" :to="item.to" custom>
-          <a
-            v-ripple
-            :href="href"
-            v-bind="props.action"
-            @click="navigate"
-            :class="[isActive && 'router-link-active']"
-          >
-            <span :class="item.icon" />
-            <span class="ml-2">{{ item.label }}</span>
-          </a>
-        </NuxtLink>
-      </template>
-    </Menubar>
   </div>
 </template>
 <script setup>
@@ -131,10 +141,9 @@ const items = ref([
   color: hsl(164, 82%, 39%);
 }
 .searchinput {
-  width: 84%;
-}
-.search {
-  width: 25vw;
+  height: 100%;
+  border-radius: 5px;
+  outline: none;
 }
 .login {
   width: 10vw;

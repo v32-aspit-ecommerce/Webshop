@@ -111,13 +111,27 @@
         </div>
       </div>
     </div>
-    <div>
-      <div v-for="item in cart" :key="item.id">
-        <h2>{{ item.title }}</h2>
-        <p>Price - ${{ item.price }}</p>
+    <div class="kurv">
+      <div class="centering">
+        <webkurv />
+        <div class="flex justify-content-center kupon">
+          <InputText type="text" v-model="value" />
+          <Button label="Apply" class="apply" />
+        </div>
+        <div>
+          <div class="stats">
+            <h3>Subtotal: ${{ totalPrice.toFixed(2) }}</h3>
+          </div>
+          <div class="stats">
+            <p>Shipping</p>
+            <p>Free</p>
+          </div>
+          <div class="stats">
+            <h3>Total Price: ${{ totalPrice.toFixed(2) }}</h3>
+          </div>
+        </div>
       </div>
     </div>
-    <webkurv />
   </div>
 </template>
 
@@ -126,6 +140,10 @@ import Checkbox from "primevue/checkbox";
 import { ref } from "vue";
 
 import Breadcrumb from "primevue/breadcrumb";
+const totalPrice = computed(() => {
+  return cart.value.reduce((total, item) => total + item.price, 0);
+});
+const cart = useState("shoppingcart");
 
 const checked = ref(false);
 const selectedCountries = ref();
@@ -204,7 +222,6 @@ input {
 .centering div div .p-inputnumber {
   margin-left: 10px;
   height: 30px;
-  width: 100%;
 }
 .flex {
   align-items: center;

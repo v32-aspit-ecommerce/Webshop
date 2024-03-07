@@ -1,58 +1,42 @@
 <template>
-  <div class="kurv">
-    <div class="centering">
-      <div class="produkt">
-        <img src="https://unsplash.it/100/100" alt="produktbillede" />
-        <div class="produktinfo">
-          <div v-for="item in cart" :key="item.id"></div>
-          <h4>Produktnavn</h4>
+  <div v-for="item in cart" :key="item.id">
+    <div class="produkt">
+      <img :src="item.image" alt="product" />
+      <div class="produktinfo">
+        <div>
+          <h2>{{ item.title }}</h2>
           <div>
-            <p>Farve</p>
-            |
-            <p>Størrelse</p>
+            <p v-if="item.color">color - {{ item.color }}</p>
+            <p v-else>color - Unkown</p>
           </div>
-          <InputNumber
-            v-model="antal"
-            showButtons
-            buttonLayout="horizontal"
-            :min="1"
-            :max="99"
-          >
-            <template #incrementbuttonicon>
-              <span class="pi pi-plus" />
-            </template>
-            <template #decrementbuttonicon>
-              <span class="pi pi-minus" />
-            </template>
-          </InputNumber>
+          <div>
+            <p v-if="item.size">size - {{ item.size }}</p>
+            <p v-else>size - Unkown</p>
+          </div>
         </div>
-        <div class="delete">
-          <h4>99,-</h4>
-          <Button icon="pi pi-trash" />
-        </div>
+        <InputNumber
+          v-model="antal"
+          showButtons
+          buttonLayout="vertical"
+          :min="1"
+          :max="99"
+        >
+          <template #incrementbuttonicon>
+            <span class="pi pi-plus" />
+          </template>
+          <template #decrementbuttonicon>
+            <span class="pi pi-minus" />
+          </template>
+        </InputNumber>
       </div>
-      <div class="flex justify-content-center kupon">
-        <InputText type="text" v-model="value" />
-        <Button label="Apply" class="apply" />
-      </div>
-      <div>
-        <div class="stats">
-          <h3>Subtotal: ${{ totalPrice.toFixed(2) }}</h3>
-        </div>
-        <div class="stats">
-          <p>Shipping</p>
-          <p>Free</p>
-        </div>
-        <div class="stats">
-          <h3>Total Price: ${{ totalPrice.toFixed(2) }}</h3>
-        </div>
+      <div class="delete">
+        <p>${{ item.price.toFixed(2) }}</p>
+        <button
+          class="btn bg-red-400 pi pi-trash"
+          @click="removeFromCart(item)"
+        ></button>
       </div>
     </div>
-
-    <h2>{{ item.title }}</h2>
-    <p>Price - ${{ item.price.toFixed(2) }}</p>
-    <button class="btn bg-red-400" @click="removeFromCart(item)">Delete</button>
-    <hr class="mt-1" />
   </div>
 </template>
 
@@ -131,8 +115,7 @@ input {
 }
 .centering div div .p-inputnumber {
   margin-left: 10px;
-  height: 30px;
-  width: 100%;
+  width: 5%;
 }
 .flex {
   align-items: center;
@@ -143,24 +126,32 @@ input {
 .produkt img {
   margin: 10px;
   border-radius: 10px;
+  height: 75px;
+  width: 75px;
 }
 .produkt div {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 .produktinfo {
-  display: flex;
-  flex-direction: column;
   flex-grow: 1;
 }
-.produktinfo .p-inputnumber-input {
+.produktinfo div div {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  margin-left: 10px;
+}
+.produktinfo .p-inputwrapper .p-inputnumber-input {
   width: 20px;
 }
 .produkt div div {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  padding-left: 5px;
 }
 .kupon {
   height: 50px;
@@ -181,5 +172,8 @@ input {
   flex-direction: column;
   align-items: center;
   margin-bottom: 3px;
+}
+.delete p {
+  margin: 5px;
 }
 </style>

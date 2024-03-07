@@ -635,7 +635,7 @@ watchEffect(() => {
 });
 </script>
 
-<style scoped>
+<style>
 .thumb {
   max-height: 120px;
   max-width: 100%;
@@ -792,9 +792,6 @@ watchEffect(() => {
 }
 
 .p-chips-input-token {
-  display: none;
-}
-.no-input li > input {
   display: none;
 }
 </style>
