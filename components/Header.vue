@@ -57,7 +57,10 @@
             </div>
           </div>
         </div>
-        <Menubar class="test dark:bg-white dark:border-0 border-0 bg-white" :model="items">
+        <Menubar
+          class="test dark:bg-white dark:border-0 border-0 bg-white"
+          :model="items"
+        >
           <template class="" #item="{ item, props }">
             <NuxtLink
               v-slot="{ href, navigate, isActive }"
@@ -89,10 +92,7 @@ const items = ref([
     label: "Home",
     to: "/",
   },
-  {
-    label: "Collection",
-    to: "/collections/",
-  },
+
   {
     label: "Products",
     to: "/products?item",
