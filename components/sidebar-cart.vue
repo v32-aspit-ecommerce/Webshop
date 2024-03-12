@@ -33,14 +33,8 @@
 import { ref, computed, watchEffect } from "vue";
 
 const cart = useState("shoppingcart", () => []);
-const visibleRight = ref(false);
-watchEffect(() => {
-  if (cart.value.length > 0) {
-    visibleRight.value = true;
-  } else {
-    visibleRight.value = false;
-  }
-});
+
+const visibleRight = useState("showcart", () => false);
 </script>
 
 <style>

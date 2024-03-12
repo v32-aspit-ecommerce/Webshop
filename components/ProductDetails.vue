@@ -9,7 +9,24 @@
         <p class="text-xl my-7">Price - ${{ product.price }}</p>
         <h3 class="font-bold border-b-2 mb-4 pb-2">product description:</h3>
         <p class="mb-7">{{ product.description }}</p>
-        <button class="btn" @click="addToCart(product)">
+
+        <!-- <NuxtLink
+          :to="`/products/`"
+          class="btn"
+          @click="
+            addToCart(product);
+            visibleRight = true;
+          "
+        >
+          <i class="material-icons mr-2 pi pi-shopping-cart"></i>Add to Cart
+        </NuxtLink> -->
+        <button
+          class="btn"
+          @click="
+            addToCart(product);
+            visibleRight = true;
+          "
+        >
           <i class="material-icons mr-2 pi pi-shopping-cart"></i>Add to Cart
         </button>
       </div>
@@ -18,6 +35,7 @@
 </template>
 
 <script setup>
+const visibleRight = useState("showcart");
 const cart = useState("shoppingcart", () => {
   return [];
 });
