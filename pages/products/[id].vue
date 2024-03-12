@@ -11,6 +11,7 @@
 </template>
 
 <script setup>
+// const { data: products, pending, error } = await useFetch('/api/products')
 const { id } = useRoute().params; // We use useRoute to get the the name that its changing too ... like $_GET = "id" from php
 const uri = "https://fakestoreapi.com/products/" + id; // know we know what id got send then we say link + id to get the right item
 

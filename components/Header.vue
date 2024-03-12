@@ -4,11 +4,7 @@
       <div
         class="flex hidden md:flex justify-between bg-white items-center pt-6"
       >
-        <div class="ml-4 h-6 mt-2 iconcard">
-          <i class="ml-2 pi pi-search">
-            <input class="searchinput" type="text" />
-          </i>
-        </div>
+      <Searchbar />
 
         <div class="logo">
           <NuxtLink to="/">
@@ -83,6 +79,7 @@
 </template>
 <script setup>
 import { ref } from "vue";
+import Searchbar from "./Searchbar.vue";
 
 const items = ref([
   {
