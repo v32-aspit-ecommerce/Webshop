@@ -15,8 +15,16 @@
           />
         </div>
         <div class="check">
-          <Checkbox v-model="checked" :binary="true" name="ad" class="ad" />
-          <p>Tilmeld mig opdateringer angående nye tilbud</p>
+          <Checkbox
+            v-model="checked"
+            :binary="true"
+            name="ad"
+            inputId="ad"
+            class="ad"
+          />
+          <label for="ad" class="ml-2"
+            >Tilmeld mig opdateringer angående nye tilbud</label
+          >
         </div>
 
         <h2>Shipping</h2>
@@ -26,7 +34,7 @@
           optionLabel="name"
           placeholder="Select Countries"
           display="chip"
-          class="w-full md:w-20rem"
+          class="w-full md:w-20rem dark:bg-transparent"
         >
           <template #option="slotProps">
             <div class="flex align-items-center">
@@ -83,6 +91,12 @@
             aria-describedby="anummer-help"
             placeholder="Adresse Nr."
           />
+          <InputText
+            id="number"
+            v-model="value"
+            aria-describedby="number-help"
+            placeholder="tlf nummer"
+          />
         </div>
         <div>
           <div class="flex flex-column gap-2">
@@ -105,9 +119,10 @@
             v-model="checked"
             :binary="true"
             name="kortinfo"
+            inputId="kort"
             class="check"
           />
-          <p>Gem mine kortinformationer</p>
+          <label for="kort" class="ml-2">Gem mine kortinformationer</label>
         </div>
       </div>
     </div>
@@ -223,7 +238,7 @@ input {
 }
 .centering div div .p-inputnumber {
   margin-left: 10px;
-  height: 30px;
+  width: 100%;
 }
 .flex {
   align-items: center;

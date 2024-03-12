@@ -20,6 +20,7 @@
           buttonLayout="vertical"
           :min="1"
           :max="99"
+          class="yep"
         >
           <template #incrementbuttonicon>
             <span class="pi pi-plus" />
