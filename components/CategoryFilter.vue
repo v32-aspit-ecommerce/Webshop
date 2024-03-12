@@ -184,12 +184,20 @@
           <p class="font-bold text-gray-500 m-4 truncate">
             Price - ${{ product.price }}
           </p>
-          <button class="btn" @click="addToCart(product)">
-            <i class="material-icons mr-2 pi pi-shopping-cart"></i>Add to Cart
-          </button>
-          <NuxtLink :to="`/products/${product.id}`">
-            <p class="btn my-4">View Details</p>
-          </NuxtLink>
+          <div class="">
+            <button
+              class="btn"
+              @click="
+                addToCart(product);
+                visibleRight = true;
+              "
+            >
+              <i class="material-icons mr-2 pi pi-shopping-cart"></i>Add to Cart
+            </button>
+            <NuxtLink :to="`/products/${product.id}`">
+              <p class="btn my-4">View Details</p>
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </div>
@@ -201,7 +209,17 @@ const cart = useState("shoppingcart");
 
 function addToCart(product) {
   cart.value.push(product);
+  console.log(visibleRight);
 }
+
+const visibleRight = useState("showcart");
+
+computed(() => {
+  visibleRight = false;
+  console.log(visibleRight);
+});
+
+// const visibleRight = ref(false);
 
 //find ud af hvordan jeg gemmer ting i localstorage
 // brug splice til delete funtionen
