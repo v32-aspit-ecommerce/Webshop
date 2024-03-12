@@ -38,6 +38,7 @@
       </div>
     </div>
   </div>
+  <div>total price {{ totalPrice.toFixed(2) }}</div>
 </template>
 
 <script setup>

@@ -30,9 +30,17 @@
 </template>
 
 <script setup>
-const cart = useState("shoppingcart");
+import { ref, computed, watchEffect } from "vue";
 
+const cart = useState("shoppingcart", () => []);
 const visibleRight = ref(false);
+watchEffect(() => {
+  if (cart.value.length > 0) {
+    visibleRight.value = true;
+  } else {
+    visibleRight.value = false;
+  }
+});
 </script>
 
 <style>

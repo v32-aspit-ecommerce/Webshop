@@ -16,8 +16,9 @@
                   v-model="activeFilters"
                   :removable="true"
                   @remove="removeFilter"
-                  class="no-input"
-                ></Chips>
+                  :class="isActiveFiltersEmpty"
+                >
+                </Chips>
               </div>
             </div>
           </div>
@@ -183,7 +184,9 @@
           <p class="font-bold text-gray-500 m-4 truncate">
             Price - ${{ product.price }}
           </p>
-          <button @click="addToCart(product)">Buy</button>
+          <button class="btn" @click="addToCart(product)">
+            <i class="material-icons mr-2 pi pi-shopping-cart"></i>Add to Cart
+          </button>
           <NuxtLink :to="`/products/${product.id}`">
             <p class="btn my-4">View Details</p>
           </NuxtLink>
@@ -194,9 +197,7 @@
 </template>
 
 <script setup>
-const cart = useState("shoppingcart", () => {
-  return [];
-});
+const cart = useState("shoppingcart");
 
 function addToCart(product) {
   cart.value.push(product);
@@ -212,6 +213,7 @@ function addToCart(product) {
 
 // Importing necessary functions from Vue.js for reactivity
 import { ref, computed, watchEffect } from "vue";
+// import inputtext from "primevue/inputtext";
 
 // Importing PrimeIcons CSS for using icons in the application
 import "primeicons/primeicons.css";
@@ -338,6 +340,15 @@ const activeFilters = ref([]);
 const activeColors = ref([]);
 const activeSizes = ref([]);
 const activeBrands = ref([]);
+
+const isActiveFiltersEmpty = computed(() => {
+  if (activeFilters.value.length === 0) {
+    return "toogleOutline";
+  } else {
+    console.log("activeFilters is not empty");
+    return {}; // Returner intet, hvis betingelsen ikke er opfyldt
+  }
+});
 
 // 'computed' is a section in Vue.js where you can define functions that compute data based on other data.
 // These functions are known as computed properties.
@@ -794,4 +805,12 @@ watchEffect(() => {
 .p-chips-input-token {
   display: none;
 }
+
+.toogleOutline ul {
+  border-style: none;
+}
+
+/* .p-chips > * {
+  border-style: none;
+} */
 </style>

@@ -9,9 +9,8 @@
         <p class="text-xl my-7">Price - ${{ product.price }}</p>
         <h3 class="font-bold border-b-2 mb-4 pb-2">product description:</h3>
         <p class="mb-7">{{ product.description }}</p>
-        <button class="btn flex">
-          <i class="material-icons mr-2 pi pi-shopping-cart"></i>
-          <button @click="addToCart(product)">Add to Cart</button>
+        <button class="btn" @click="addToCart(product)">
+          <i class="material-icons mr-2 pi pi-shopping-cart"></i>Add to Cart
         </button>
       </div>
     </div>
@@ -25,6 +24,7 @@ const cart = useState("shoppingcart", () => {
 
 function addToCart(product) {
   cart.value.push(product);
+  console.log(product);
 }
 
 const { product } = defineProps(["product"]);
