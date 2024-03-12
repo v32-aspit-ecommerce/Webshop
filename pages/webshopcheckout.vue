@@ -15,7 +15,7 @@
           />
         </div>
         <div class="check">
-          <Checkbox v-model="checked" :binary="true" name="ad" class="check" />
+          <Checkbox v-model="checked" :binary="true" name="ad" class="ad" />
           <p>Tilmeld mig opdateringer angående nye tilbud</p>
         </div>
 
@@ -158,6 +158,7 @@ const countries = ref([
   { name: "Japan", code: "JP" },
   { name: "Spain", code: "ES" },
   { name: "United States", code: "US" },
+  { name: "Denmark", code: "DK" },
 ]);
 const home = ref({
   icon: "pi pi-home",
@@ -196,7 +197,8 @@ const items = ref([{ label: "Webshop" }]);
   display: flex;
   flex-direction: column;
 }
-.check {
+.check,
+.ad {
   display: flex;
   justify-content: flex-start;
   margin-left: 5px;
